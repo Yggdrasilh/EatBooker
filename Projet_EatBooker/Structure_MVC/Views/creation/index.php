@@ -17,6 +17,7 @@ $title = 'Mon portfolio - Création';
         </tr>
     </thead>
     <tbody>
+        <p> Je suis une grosse Patate et julie aussi. </p>
         <?php
 
 
