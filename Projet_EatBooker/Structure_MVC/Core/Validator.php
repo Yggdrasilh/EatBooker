@@ -8,7 +8,7 @@ class Validator
     //propriété static pour stocker le nom du fichier généré afin de le récupèrer dans le controller
     static public string $newFileName;
 
-    //Méthode permettant de tester tous les champs $_POST sans distinction. 
+    //Méthode permettant de tester tous les champs $_POST sans distinction, la fonctionnalité la plus basic. 
     static function validPostGlobal()
     {
         if (!empty($_POST)) {

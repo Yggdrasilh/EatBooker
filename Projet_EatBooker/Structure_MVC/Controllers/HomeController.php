@@ -8,4 +8,9 @@ class HomeController extends Controller
     {
         $this->render('home/index');
     }
+
+    public function test()
+    {
+        $this->render('home/index');
+    }
 }
