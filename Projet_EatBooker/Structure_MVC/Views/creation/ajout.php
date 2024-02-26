@@ -3,6 +3,8 @@
 $title = 'Mon portfolio - Création';
 echo $messageError;
 
+echo "coucou";
+
 ?>
 <form action="index.php?controller=Creation&action=ajout" method="post" id="ajoutCreation" enctype='multipart/form-data'>
     <div class="input-group mb-3">
