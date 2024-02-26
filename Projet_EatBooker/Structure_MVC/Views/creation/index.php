@@ -17,8 +17,9 @@ $title = 'Mon portfolio - Création';
         </tr>
     </thead>
     <tbody>
-        <p> Je suis une grosse Patate et julie aussi. </p>
         <?php
+
+        echo "coucou julie la petite olive :)";
 
 
         foreach ($list as $key => $value) {
