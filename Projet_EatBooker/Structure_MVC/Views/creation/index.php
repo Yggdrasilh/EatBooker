@@ -36,5 +36,3 @@ $title = 'Mon portfolio - Création';
         ?>
     </tbody>
 </table>
-
-<?php echo "coucou"; ?>
