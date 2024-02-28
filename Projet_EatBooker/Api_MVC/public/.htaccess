@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^home$ index.php?controller=home&action=index [QSA,L]
+RewriteRule ^creations$ index.php?controller=creation&action=index [QSA,L]
+RewriteRule ^creation/find/([0-9]+)$ index.php?controller=creation&action=affichage&id=$1 [QSA,L]
+RewriteRule ^creation/update/([0-9]+)$ index.php?controller=creation&action=edit&id=$1 [QSA,L]
+RewriteRule ^creation/delete/([0-9]+)$ index.php?controller=creation&action=delate&id=$1 [QSA,L]
+RewriteRule ^creation/add$ index.php?controller=creation&action=ajout [QSA,L]

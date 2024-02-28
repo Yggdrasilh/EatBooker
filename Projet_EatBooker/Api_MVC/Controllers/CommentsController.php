@@ -2,28 +2,32 @@
 
 namespace App\Controllers;
 
-use App\Models\CreationModel;
-use App\Entities\Creation;
+use App\Models\CommentsModel;
+use App\Entities\Comments;
 use App\Core\Validator;
 
-class CreationController extends Controller
+class CommentsController extends Controller
 {
 
     public function index()
     {
-        $creationModel = new CreationModel();
-        $list = $creationModel->findAll();
-        $this->render('creation/index', ['list' => $list]);
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Methods: GET");
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        echo  json_encode(["creations" => (new CommentsModel())->findAll()]);
     }
 
     function ajout()
     {
-        $creationModel = new CreationModel();
+        $commentsModel = new CommentsModel();
         $messageError = '';
 
         if (Validator::validPostGlobal()) {
 
-            $creation = new Creation;
+            $creation = new Comments;
             $creation->setTitle(htmlspecialchars($_POST['title'], ENT_QUOTES, 'UTF-8'));
             $creation->setDescription(htmlspecialchars($_POST['description'], ENT_QUOTES, 'UTF-8'));
             $creation->setCreated_at(htmlspecialchars($_POST['date'], ENT_QUOTES, 'UTF-8'));

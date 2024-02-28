@@ -35,7 +35,8 @@ class Router
             //     $controller->$action();
             // }
 
-            (isset($_GET)) ? call_user_func_array([$controller, $action], $_GET) : $controller->$action();
+            /**************** Ne laisser que sa si l'on veut utiliser les GET dans une API ****************/
+            $controller->$action();
         } else {
             // On envoie le code réponse 404
             http_response_code(404);
