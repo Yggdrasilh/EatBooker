@@ -1,3 +1,25 @@
+/* *************GOOGLE FONT DU PROJET *************** */
+/* .libre-baskerville-regular {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .libre-baskerville-bold {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .libre-baskerville-regular-italic {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+   */
+
+
+
 /***************************** Starter Pack *****************************/
 img {
     max-width: 100%;
@@ -5,6 +27,74 @@ img {
     width: 150px;
 }
 
+#wrapper {
+    margin: 0 auto;
+    font-family: "Libre Baskerville", serif;
+}
+
 body {
-    background-color: aquamarine;
+    background-color: #E9FFE0;
+}
+
+.text_button {
+    margin-bottom: 0;
+    font-family: "Libre Baskerville", serif;
+}
+
+p {
+    font-family: "Libre Baskerville", serif;
+}
+
+/*********************************CSS HEADER **********************************/
+#header_sans_nav {
+    background-color: #313131;
+
+}
+
+#header_logo_connexion {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#header_connexion {
+    display: grid;
+    align-content: space-evenly;
+    place-items: center;
+    gap: 5%;
+
+    margin-right: 2%;
+}
+
+#logo_header {
+    width: 40%;
+}
+
+/* ******** @media query for mobile viewport ********* */
+@media screen and (max-width:480px) {
+
+    #header_connexion {
+        grid-auto-flow: row;
+        /* pour que les éléments soient disposés en ligne */
+        gap: 5px;
+        /* réduire l'espace entre les éléments */
+    }
+
+    #connexion_restaurant {
+        margin-top: 0.2em;
+    }
+
+    #connexion_user {
+        margin-bottom: 0.2em;
+    }
+
+    #logo_header {
+        width: 60%;
+    }
+}
+
+/*********************************CSS FOOTER **********************************/
+
+#footer {
+    background-color: #313131;
 }
