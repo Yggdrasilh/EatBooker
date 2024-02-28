@@ -4,3 +4,7 @@ img {
     height: auto;
     width: 150px;
 }
+
+body {
+    background-color: aquamarine;
+}
