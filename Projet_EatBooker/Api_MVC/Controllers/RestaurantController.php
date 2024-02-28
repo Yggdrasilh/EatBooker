@@ -2,31 +2,33 @@
 
 namespace App\Controllers;
 
-use App\Models\CreationModel;
-use App\Entities\Creation;
+use App\Models\RestaurantModelModel;
+use App\Entities\Restaurant;
 use App\Core\Validator;
+use App\Models\RestaurantModel;
 
-class CreationController extends Controller
+class RestaurantController extends Controller
 {
 
     public function index()
     {
-        $creationModel = new CreationModel();
-        $list = $creationModel->findAll();
-        $this->render('creation/index', ['list' => $list]);
+        $restaurantModel = new RestaurantModel();
+        $list = $restaurantModel->findAll();
+        $this->render('restaurant/index', ['list' => $list]);
     }
 
     function ajout()
     {
-        $creationModel = new CreationModel();
+        $restaurantModel = new RestaurantModel();
         $messageError = '';
 
         if (Validator::validPostGlobal()) {
 
-            $creation = new Creation;
-            $creation->setTitle(htmlspecialchars($_POST['title'], ENT_QUOTES, 'UTF-8'));
-            $creation->setDescription(htmlspecialchars($_POST['description'], ENT_QUOTES, 'UTF-8'));
-            $creation->setCreated_at(htmlspecialchars($_POST['date'], ENT_QUOTES, 'UTF-8'));
+            $restaurant = new Restaurant;
+            $restaurant->setNom_restaurant(htmlspecialchars($_POST['nom_restaurant'], ENT_QUOTES, 'UTF-8'));
+            $restaurant->setEmail_restaurant(htmlspecialchars($_POST['email_restaurant'], ENT_QUOTES, 'UTF-8'));
+            $restaurant->setPassword_restaurant(htmlspecialchars($_POST['password_restaurant'], ENT_QUOTES, 'UTF-8'));
+            $restaurant->setPassword_restaurant(htmlspecialchars($_POST['password_restaurant'], ENT_QUOTES, 'UTF-8'));
             if (isset($_FILES['image']) && ($_FILES['image']['error'] == 0)) {
                 move_uploaded_file($_FILES['image']['tmp_name'], 'image/' . $_FILES['image']['name']);
                 $creation->setPicture('image/' . $_FILES['image']['name']);

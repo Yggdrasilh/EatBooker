@@ -4,8 +4,8 @@ namespace App\Controllers;
 
 use App\Core\Validator;
 use App\Core\CSRFTokenManager;
-use App\Entities\Creation;
-use App\Models\CreationModel;
+use App\Entities\Restaurant;
+use App\Models\RestaurantModel;
 
 
 abstract class Controller
