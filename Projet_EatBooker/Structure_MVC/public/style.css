@@ -8,3 +8,48 @@ img {
 body {
     background-color: aquamarine;
 }
+
+
+/* Navigation */
+
+#navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.menu-icon {
+    display: none;
+    width: 30px;
+    height: 30px;
+    /* Masquer le menu burger par défaut */
+}
+
+#navigation.show {
+    display: block;
+}
+
+
+@media screen and (max-width: 480px) {
+
+
+    #navigation {
+        display: none;
+    }
+
+    /* Afficher le menu burger */
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+
+    .menu-icon .bar {
+        display: block;
+        width: 1.563em;
+        height: 0.188em;
+        background-color: #333;
+        margin: 0.313em auto;
+
+    }
+}

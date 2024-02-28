@@ -15,8 +15,15 @@ abstract class Controller
         extract($data);
 
         ob_start();
+
         include dirname(__DIR__) . '/Views/' . $path . '.php';
+
         $content = ob_get_clean();
+
+        // On inclu la nav avec le base.php 
+        ob_start();
+        include dirname(__DIR__) . '/Views/nav.php';
+        $nav = ob_get_clean();
 
         include dirname(__DIR__) . '/Views/base.php';
     }
