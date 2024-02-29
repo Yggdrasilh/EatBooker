@@ -36,6 +36,7 @@ document.getElementById("my-form").addEventListener("submit", function (event) {
 function toggleMenu() {
     var navigation = document.getElementById("navigation");
     navigation.classList.toggle("show");
+    console.log(navigation)
 }
 // **********************************************************
 
