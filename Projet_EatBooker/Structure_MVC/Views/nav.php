@@ -38,16 +38,10 @@ if ($_SESSION['role_user'] == 'user') {
 
 // On construit la nav 
 ?>
-<nav id="navigation">
+
     <?php
     // On boucle pour afficher les elements. 
     foreach ($nav_elements as $nav_element) {
         echo $nav_element;
     }
     ?>
-</nav>
-<div class="menu-icon" onclick="toggleMenu()">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-</div>
