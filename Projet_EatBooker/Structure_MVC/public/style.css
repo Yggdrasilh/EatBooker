@@ -78,7 +78,12 @@ p {
     width: 40%;
 }
 
-/* ******** @media query for mobile viewport ********* */
+#connexion_restaurant,
+#connexion_user {
+    width: 12rem;
+}
+
+/* ******** @media query for mobile viewport HEADER ********* */
 @media screen and (max-width:480px) {
 
     #header_connexion {
@@ -105,5 +110,63 @@ p {
 
 #footer {
     background-color: #313131;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
 
+}
+
+.colonne_footer {
+    padding-left: 0;
+}
+
+.menu_footer {
+    list-style-type: none;
+    color: white;
+    text-decoration: none;
+
+
+}
+
+
+.lien_menu_footer:link {
+    text-decoration: none;
+    color: white;
+}
+
+.lien_menu_footer:hover {
+    text-decoration: none;
+    color: #E9FFE0;
+}
+
+/* ******** @media query for mobile viewport FOOTER ********* */
+@media screen and (max-width:480px) {
+
+
+
+    #footer {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    #footer ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    #footer li {
+        display: block;
+        margin: 0 0 10px;
+    }
+
+    .colonne_footer {
+        width: 50%;
+    }
 }

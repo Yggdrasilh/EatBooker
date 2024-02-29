@@ -1,3 +1,5 @@
 <?php
 
-$title = ' - Accueil';
+$title = ' EatBooker - Accueil';
+
+echo "coucou";
