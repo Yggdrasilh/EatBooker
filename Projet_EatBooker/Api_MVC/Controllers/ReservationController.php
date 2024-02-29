@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Models\CommentsModel;
-use App\Entities\Comments;
-use App\Core\Validator;
 
-class CommentsController extends Controller
+use App\Core\Validator;
+use App\Entities\Reservation;
+use App\Models\ReservationModel;
+
+class ReservationController extends Controller
 {
 
     public function index()
@@ -17,7 +18,7 @@ class CommentsController extends Controller
         header("Access-Control-Max-Age: 3600");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        echo  json_encode(["comments" => (new CommentsModel())->findAll()]);
+        echo  json_encode(["reservation" => (new ReservationModel())->findAll()]);
     }
 
     function ajout()
@@ -28,7 +29,7 @@ class CommentsController extends Controller
         header("Access-Control-Max-Age: 3600");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        $commentsModel = new CommentsModel();
+        $reservationModel = new ReservationModel();
         $messageError = '';
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -40,25 +41,27 @@ class CommentsController extends Controller
 
             //tableau de qui référence toute les clés qui corresponde au champs de formulaire
             $keys = [
-                'titre_comments',
-                'corps_comments',
-                'reporting_comments',
-                'id_user',
+                'date_reservation',
+                'heure_reservation',
+                'nb_couvert_reservation',
+                'statut_reservation',
                 'id_restaurant',
+                'id_user'
             ];
 
 
             //vérification que tout les champs de formulaire sont remplie et gestion des erreurs
             if (Validator::validPostSelect($data, $keys)) {
 
-                $comments = new Comments;
-                $comments->setTitre_comments($this->protected_values($data['titre_comments']));
-                $comments->setCorps_comments($this->protected_values($data['corps_comments']));
-                $comments->setReporting_comments($this->protected_values($data["reporting_comments"]));
-                $comments->setId_user($this->protected_values($data['id_user']));
-                $comments->setId_restaurant($this->protected_values($data['id_restaurant']));
+                $reservation = new Reservation;
+                $reservation->setDate_reservation($this->protected_values($data['date_reservation']));
+                $reservation->setHeure_reservation($this->protected_values($data['heure_reservation']));
+                $reservation->setNb_couvert_reservation($this->protected_values($data['nb_couvert_reservation']));
+                $reservation->setSatut_reservation($this->protected_values($data['statut_reservation']));
+                $reservation->setId_restaurant($this->protected_values($data['id_restaurant']));
+                $reservation->setId_user($this->protected_values($data['id_user']));
 
-                $commentsModel->create($comments);
+                $reservationModel->create($reservation);
                 echo  json_encode(['status' => true]);
             } else {
                 $messageError =  "Tous les champs du formulaire ne sont pas correctement renseignés !";
@@ -76,7 +79,7 @@ class CommentsController extends Controller
         header("Access-Control-Max-Age: 3600");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        echo  json_encode(["comments" => (new CommentsModel())->findOne($id), 'id' => $id]);
+        echo  json_encode(["reservation" => (new ReservationModel())->findOne($id), 'id' => $id]);
     }
 
     function delete()
@@ -88,11 +91,11 @@ class CommentsController extends Controller
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
         $id = $_GET['id'] ?? '';
-        $commentsModel = new CommentsModel();
+        $reservationModel = new ReservationModel();
 
         // vérifier que l'id est bien renseigner
         if ($id != '') {
-            $commentsModel->delete($id);
+            $reservationModel->delete($id);
 
             echo  json_encode(['status' => true]);
         } else {
@@ -108,7 +111,7 @@ class CommentsController extends Controller
         header("Access-Control-Max-Age: 3600");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        $commentsModel = new CommentsModel();
+        $reservationModel = new ReservationModel();
         $messageError = '';
         $id = $_GET['id'] ?? '';
 
@@ -121,25 +124,27 @@ class CommentsController extends Controller
 
             //tableau de qui référence toute les clés qui corresponde au champs de formulaire
             $keys = [
-                'titre_comments',
-                'corps_comments',
-                'reporting_comments',
-                'id_user',
+                'date_reservation',
+                'heure_reservation',
+                'nb_couvert_reservation',
+                'statut_reservation',
                 'id_restaurant',
+                'id_user'
             ];
 
 
             //vérification que tout les champs de formulaire sont remplie et gestion des erreurs
             if (Validator::validPostSelect($data, $keys) && $id != '') {
 
-                $comments = new Comments;
-                $comments->setTitre_comments($this->protected_values($data['titre_comments']));
-                $comments->setCorps_comments($this->protected_values($data['corps_comments']));
-                $comments->setReporting_comments($this->protected_values($data["reporting_comments"]));
-                $comments->setId_user($this->protected_values($data['id_user']));
-                $comments->setId_restaurant($this->protected_values($data['id_restaurant']));
+                $reservation = new Reservation;
+                $reservation->setDate_reservation($this->protected_values($data['date_reservation']));
+                $reservation->setHeure_reservation($this->protected_values($data['heure_reservation']));
+                $reservation->setNb_couvert_reservation($this->protected_values($data['nb_couvert_reservation']));
+                $reservation->setSatut_reservation($this->protected_values($data['statut_reservation']));
+                $reservation->setId_restaurant($this->protected_values($data['id_restaurant']));
+                $reservation->setId_user($this->protected_values($data['id_user']));
 
-                $commentsModel->update($comments, $id);
+                $reservationModel->create($reservation);
                 echo  json_encode(['status' => true]);
             } else {
                 $messageError =  "Tous les champs du formulaire ne sont pas correctement renseignés OU l'id n'est pas bien passer en paramètre !";

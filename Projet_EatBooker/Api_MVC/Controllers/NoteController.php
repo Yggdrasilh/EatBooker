@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Models\CommentsModel;
-use App\Entities\Comments;
-use App\Core\Validator;
 
-class CommentsController extends Controller
+use App\Core\Validator;
+use App\Entities\Note;
+use App\Models\NoteModel;
+
+class ReservationController extends Controller
 {
 
     public function index()
@@ -17,7 +18,7 @@ class CommentsController extends Controller
         header("Access-Control-Max-Age: 3600");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        echo  json_encode(["comments" => (new CommentsModel())->findAll()]);
+        echo  json_encode(["note" => (new NoteModel())->findAll()]);
     }
 
     function ajout()
@@ -28,7 +29,7 @@ class CommentsController extends Controller
         header("Access-Control-Max-Age: 3600");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        $commentsModel = new CommentsModel();
+        $noteModel = new NoteModel();
         $messageError = '';
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -40,25 +41,21 @@ class CommentsController extends Controller
 
             //tableau de qui référence toute les clés qui corresponde au champs de formulaire
             $keys = [
-                'titre_comments',
-                'corps_comments',
-                'reporting_comments',
+                'note_note',
                 'id_user',
-                'id_restaurant',
+                'id_restaurant'
             ];
 
 
             //vérification que tout les champs de formulaire sont remplie et gestion des erreurs
             if (Validator::validPostSelect($data, $keys)) {
 
-                $comments = new Comments;
-                $comments->setTitre_comments($this->protected_values($data['titre_comments']));
-                $comments->setCorps_comments($this->protected_values($data['corps_comments']));
-                $comments->setReporting_comments($this->protected_values($data["reporting_comments"]));
-                $comments->setId_user($this->protected_values($data['id_user']));
-                $comments->setId_restaurant($this->protected_values($data['id_restaurant']));
+                $note = new Note;
+                $note->setNote_note($this->protected_values($data['note_note']));
+                $note->setId_user($this->protected_values($data['id_user']));
+                $note->setId_restaurant($this->protected_values($data['id_restaurant']));
 
-                $commentsModel->create($comments);
+                $noteModel->create($note);
                 echo  json_encode(['status' => true]);
             } else {
                 $messageError =  "Tous les champs du formulaire ne sont pas correctement renseignés !";
@@ -76,7 +73,7 @@ class CommentsController extends Controller
         header("Access-Control-Max-Age: 3600");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        echo  json_encode(["comments" => (new CommentsModel())->findOne($id), 'id' => $id]);
+        echo  json_encode(["note" => (new NoteModel())->findOne($id), 'id' => $id]);
     }
 
     function delete()
@@ -88,11 +85,11 @@ class CommentsController extends Controller
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
         $id = $_GET['id'] ?? '';
-        $commentsModel = new CommentsModel();
+        $noteModel = new NoteModel();
 
         // vérifier que l'id est bien renseigner
         if ($id != '') {
-            $commentsModel->delete($id);
+            $noteModel->delete($id);
 
             echo  json_encode(['status' => true]);
         } else {
@@ -108,7 +105,7 @@ class CommentsController extends Controller
         header("Access-Control-Max-Age: 3600");
         header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        $commentsModel = new CommentsModel();
+        $noteModel = new NoteModel();
         $messageError = '';
         $id = $_GET['id'] ?? '';
 
@@ -121,25 +118,21 @@ class CommentsController extends Controller
 
             //tableau de qui référence toute les clés qui corresponde au champs de formulaire
             $keys = [
-                'titre_comments',
-                'corps_comments',
-                'reporting_comments',
+                'note_note',
                 'id_user',
-                'id_restaurant',
+                'id_restaurant'
             ];
 
 
             //vérification que tout les champs de formulaire sont remplie et gestion des erreurs
             if (Validator::validPostSelect($data, $keys) && $id != '') {
 
-                $comments = new Comments;
-                $comments->setTitre_comments($this->protected_values($data['titre_comments']));
-                $comments->setCorps_comments($this->protected_values($data['corps_comments']));
-                $comments->setReporting_comments($this->protected_values($data["reporting_comments"]));
-                $comments->setId_user($this->protected_values($data['id_user']));
-                $comments->setId_restaurant($this->protected_values($data['id_restaurant']));
+                $note = new Note;
+                $note->setNote_note($this->protected_values($data['note_note']));
+                $note->setId_user($this->protected_values($data['id_user']));
+                $note->setId_restaurant($this->protected_values($data['id_restaurant']));
 
-                $commentsModel->update($comments, $id);
+                $noteModel->update($note, $id);
                 echo  json_encode(['status' => true]);
             } else {
                 $messageError =  "Tous les champs du formulaire ne sont pas correctement renseignés OU l'id n'est pas bien passer en paramètre !";
