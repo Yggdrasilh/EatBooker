@@ -46,8 +46,3 @@ if ($_SESSION['role_user'] == 'user') {
     }
     ?>
 </nav>
-<div class="menu-icon" onclick="toggleMenu()">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-</div>
