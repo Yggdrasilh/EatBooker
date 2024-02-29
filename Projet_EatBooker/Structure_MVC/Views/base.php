@@ -11,12 +11,12 @@
 
     <!-- lien feuille de style -->
 
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styleJu.css">
-   <link rel="stylesheet" href="styleSim.css">
+    <link rel="stylesheet" href="styleSim.css">
 
-  
-    
+
+
 
 
     <!--  liens font awesome et google fonts -->
@@ -42,7 +42,7 @@
                     <!--bouton connexion restaurateur ATTENTION CHANGER LE LIEN mettre lien vers formulaire de connexion restaurant-->
                     <a href="#" id="connexion_restaurant">
                         <button type="button" class="btn btn-light" id="connexion_restaurant">
-                            <p class="text_button">J'ai un restaurant</p>
+                            <p class="text_button">Inscrire Mon Restaurant</p>
                         </button>
                     </a>
 
@@ -107,7 +107,7 @@
             <!-- colonne milieu footer - ATTENTION MODIFIER LES LIENS - reprendre lien bouton header -->
             <ul id="colonne_milieu_footer" class="colonne_footer">
                 <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Vous êtes Restaurateur/Restauratrice</a>
+                    <a href="#" class="lien_menu_footer">Inscrire Mon Restaurant</a>
                 </li>
                 <li class="menu_footer">
                     <a href="#" class="lien_menu_footer">Vous souhaitez réserver</a>
