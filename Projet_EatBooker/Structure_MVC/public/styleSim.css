@@ -1,0 +1,28 @@
+/* Navigation */
+
+#navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#menu-icon {
+    display: none;
+    width: 30px;
+    height: 30px;
+    /* Masquer le menu burger par défaut */
+}
+
+@media screen and (max-width: 480px) {
+    #navigation {
+        display: none;
+    }
+
+    /* Afficher le menu burger */
+    #menu-icon {
+        display: block;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+    }
+}
