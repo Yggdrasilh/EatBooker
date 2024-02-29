@@ -36,3 +36,17 @@ RewriteRule ^Comments/find/([0-9]+)$ index.php?controller=Comments&action=affich
 RewriteRule ^Comments/update/([0-9]+)$ index.php?controller=Comments&action=update&id=$1 [QSA,L]
 RewriteRule ^Comments/delete/([0-9]+)$ index.php?controller=Comments&action=delete&id=$1 [QSA,L]
 RewriteRule ^Comments/add$ index.php?controller=Comments&action=ajout [QSA,L]
+
+#Récriture url pour table Restaurant
+RewriteRule ^restaurant$ index.php?controller=restaurant&action=index [QSA,L]
+RewriteRule ^restaurant/find/([0-9]+)$ index.php?controller=restaurant&action=affichage&id=$1 [QSA,L]
+RewriteRule ^restaurant/update/([0-9]+)$ index.php?controller=restaurant&action=update&id=$1 [QSA,L]
+RewriteRule ^restaurant/delete/([0-9]+)$ index.php?controller=restaurant&action=delete&id=$1 [QSA,L]
+RewriteRule ^restaurant/add$ index.php?controller=restaurant&action=ajout [QSA,L]
+
+#Récriture url pour table Planning
+RewriteRule ^planning$ index.php?controller=planning&action=index [QSA,L]
+RewriteRule ^planning/find/([0-9]+)$ index.php?controller=planning&action=affichage&id=$1 [QSA,L]
+RewriteRule ^planning/update/([0-9]+)$ index.php?controller=planning&action=update&id=$1 [QSA,L]
+RewriteRule ^planning/delete/([0-9]+)$ index.php?controller=planning&action=delete&id=$1 [QSA,L]
+RewriteRule ^planning/add$ index.php?controller=planning&action=ajout [QSA,L]
