@@ -144,7 +144,7 @@ class ReservationController extends Controller
                 $reservation->setId_restaurant($this->protected_values($data['id_restaurant']));
                 $reservation->setId_user($this->protected_values($data['id_user']));
 
-                $reservationModel->create($reservation);
+                $reservationModel->update($reservation, $id);
                 echo  json_encode(['status' => true]);
             } else {
                 $messageError =  "Tous les champs du formulaire ne sont pas correctement renseignés OU l'id n'est pas bien passer en paramètre !";
