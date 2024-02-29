@@ -1,0 +1,52 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Récriture url pour table User
+RewriteRule ^user$ index.php?controller=user&action=index [QSA,L]
+RewriteRule ^user/find/([0-9]+)$ index.php?controller=user&action=affichage&id=$1 [QSA,L]
+RewriteRule ^user/update/([0-9]+)$ index.php?controller=user&action=update&id=$1 [QSA,L]
+RewriteRule ^user/delete/([0-9]+)$ index.php?controller=user&action=delete&id=$1 [QSA,L]
+RewriteRule ^user/add$ index.php?controller=user&action=ajout [QSA,L]
+
+#Récriture url pour table Reservation
+RewriteRule ^reservation$ index.php?controller=reservation&action=index [QSA,L]
+RewriteRule ^reservation/find/([0-9]+)$ index.php?controller=reservation&action=affichage&id=$1 [QSA,L]
+RewriteRule ^reservation/update/([0-9]+)$ index.php?controller=reservation&action=update&id=$1 [QSA,L]
+RewriteRule ^reservation/delete/([0-9]+)$ index.php?controller=reservation&action=delete&id=$1 [QSA,L]
+RewriteRule ^reservation/add$ index.php?controller=reservation&action=ajout [QSA,L]
+
+#Récriture url pour table Note
+RewriteRule ^note$ index.php?controller=note&action=index [QSA,L]
+RewriteRule ^note/find/([0-9]+)$ index.php?controller=note&action=affichage&id=$1 [QSA,L]
+RewriteRule ^note/update/([0-9]+)$ index.php?controller=note&action=update&id=$1 [QSA,L]
+RewriteRule ^note/delete/([0-9]+)$ index.php?controller=note&action=delete&id=$1 [QSA,L]
+RewriteRule ^note/add$ index.php?controller=note&action=ajout [QSA,L]
+
+#Récriture url pour table Favori
+RewriteRule ^favori$ index.php?controller=favori&action=index [QSA,L]
+RewriteRule ^favori/find/([0-9]+)$ index.php?controller=favori&action=affichage&id=$1 [QSA,L]
+RewriteRule ^favori/update/([0-9]+)$ index.php?controller=favori&action=update&id=$1 [QSA,L]
+RewriteRule ^favori/delete/([0-9]+)$ index.php?controller=favori&action=delete&id=$1 [QSA,L]
+RewriteRule ^favori/add$ index.php?controller=favori&action=ajout [QSA,L]
+
+#Récriture url pour table Comments
+RewriteRule ^Comments$ index.php?controller=Comments&action=index [QSA,L]
+RewriteRule ^Comments/find/([0-9]+)$ index.php?controller=Comments&action=affichage&id=$1 [QSA,L]
+RewriteRule ^Comments/update/([0-9]+)$ index.php?controller=Comments&action=update&id=$1 [QSA,L]
+RewriteRule ^Comments/delete/([0-9]+)$ index.php?controller=Comments&action=delete&id=$1 [QSA,L]
+RewriteRule ^Comments/add$ index.php?controller=Comments&action=ajout [QSA,L]
+
+#Récriture url pour table Restaurant
+RewriteRule ^restaurant$ index.php?controller=restaurant&action=index [QSA,L]
+RewriteRule ^restaurant/find/([0-9]+)$ index.php?controller=restaurant&action=affichage&id=$1 [QSA,L]
+RewriteRule ^restaurant/update/([0-9]+)$ index.php?controller=restaurant&action=update&id=$1 [QSA,L]
+RewriteRule ^restaurant/delete/([0-9]+)$ index.php?controller=restaurant&action=delete&id=$1 [QSA,L]
+RewriteRule ^restaurant/add$ index.php?controller=restaurant&action=ajout [QSA,L]
+
+#Récriture url pour table Planning
+RewriteRule ^planning$ index.php?controller=planning&action=index [QSA,L]
+RewriteRule ^planning/find/([0-9]+)$ index.php?controller=planning&action=affichage&id=$1 [QSA,L]
+RewriteRule ^planning/update/([0-9]+)$ index.php?controller=planning&action=update&id=$1 [QSA,L]
+RewriteRule ^planning/delete/([0-9]+)$ index.php?controller=planning&action=delete&id=$1 [QSA,L]
+RewriteRule ^planning/add$ index.php?controller=planning&action=ajout [QSA,L]
