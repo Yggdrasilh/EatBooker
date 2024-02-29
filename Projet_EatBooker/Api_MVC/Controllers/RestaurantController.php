@@ -2,115 +2,168 @@
 
 namespace App\Controllers;
 
-use App\Models\RestaurantModelModel;
 use App\Entities\Restaurant;
-use App\Core\Validator;
 use App\Models\RestaurantModel;
+use App\Core\Validator;
 
 class RestaurantController extends Controller
 {
 
-    public function index()
+    public function findAll()
     {
-        $restaurantModel = new RestaurantModel();
-        $list = $restaurantModel->findAll();
-        $this->render('restaurant/index', ['list' => $list]);
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Methods: GET");
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        echo  json_encode(["restaurant" => (new RestaurantModel())->findAll()]);
     }
 
-    function ajout()
+    public function findOne()
     {
+        $id_restaurant = $_GET["id_restaurant"];
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Methods: GET");
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        echo  json_encode(["restaurant" => (new RestaurantModel())->findOne($id_restaurant)]);
+    }
+
+    function create()
+    {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Methods: POST");
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
         $restaurantModel = new RestaurantModel();
         $messageError = '';
 
-        if (Validator::validPostGlobal()) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Récupérer les données JSON du corps de la requête
+            $json = file_get_contents('php://input');
 
-            $restaurant = new Restaurant;
-            $restaurant->setNom_restaurant(htmlspecialchars($_POST['nom_restaurant'], ENT_QUOTES, 'UTF-8'));
-            $restaurant->setEmail_restaurant(htmlspecialchars($_POST['email_restaurant'], ENT_QUOTES, 'UTF-8'));
-            $restaurant->setPassword_restaurant(htmlspecialchars($_POST['password_restaurant'], ENT_QUOTES, 'UTF-8'));
-            $restaurant->setPassword_restaurant(htmlspecialchars($_POST['password_restaurant'], ENT_QUOTES, 'UTF-8'));
-            if (isset($_FILES['image']) && ($_FILES['image']['error'] == 0)) {
-                move_uploaded_file($_FILES['image']['tmp_name'], 'image/' . $_FILES['image']['name']);
-                $creation->setPicture('image/' . $_FILES['image']['name']);
-            }
+            // Convertir les données JSON en tableau PHP
+            $data = json_decode($json, true);
 
-            $creationModel->create($creation);
-            header("Location: index.php?controller=Creation&action=index");
-        } elseif (!empty($_POST)) {
-            $messageError =  "<script>
-            window.onload = function() {
-              alert('Veuillez renseigner tous les champs du formulaire !');
-            };
-          </script>";
-        }
-        $this->render('creation/ajout', ['messageError' => $messageError]);
-    }
+            //tableau de qui référence toute les clés qui corresponde au champs de formulaire
+            $keys = [
+                'nom_restaurant',
+                'email_restaurant',
+                'password_restaurant',
+                'adresse_restaurant',
+                'cp_restaurant',
+                'ville_restaurant',
+                'description_restaurant',
+                'place_max_restaurant',
+                'prix_restaurant',
+                'menu_restaurant',
+                'type_restaurant',
+                'note_moyenne_restaurant',
+                'id_planning',
+            ];
 
-    function affichage()
-    {
-        $creationModel = new CreationModel();
-        $list = $creationModel->findAll();
-        $this->render('creation/affichage', ['list' => $list]);
-    }
 
-    function delate()
-    {
-        $id = $_GET['id'] ?? '';
-        $verif = $_GET['verif'] ?? '';
-        $creationModel = new CreationModel();
+            //vérification que tout les champs de formulaire sont remplie
+            if (Validator::validPostSelect($data, $keys)) {
 
-        if ($id != '' && $verif == true) {
-            $creationModel->supp($id);
-            header("Location: index.php?controller=Creation&action=index");
-        } else {
-            echo "<link rel='stylesheet' href='../public/style.css'>
-            <div id='verifSupp'><h2>Vous êtes sur de vouloir le supprimer</h2>
-            <a href='index.php?controller=Creation&action=delate&id=$id&verif=true'><button id='oui'>Oui</button></a>
-            <a href='index.php?controller=Creation&action=index'><button id='non'>Non</button></a></div>";
-        }
-    }
-
-    function edit()
-    {
-
-        $id = $_GET["id"] ?? '';
-        $creation = new Creation;
-        $creationModel = new CreationModel();
-        $titre = htmlspecialchars($_POST['title'] ?? '');
-        $description = htmlspecialchars($_POST['description'] ?? '');
-        $date = htmlspecialchars($_POST['date'] ?? '');
-
-        if ($titre != '' &&  $description != '' && $date != '') {
-            $timestamp = time() - (30);
-            if (isset($_GET['id']) && isset($_POST['token']) && $_POST['token'] == $_SESSION['token'] && $_SESSION['token_time'] >= $timestamp) {
-
-                $creation->setTitle($titre);
-                $creation->setDescription($description);
-                $creation->setCreated_at($date);
-                if (isset($_FILES['image']) && ($_FILES['image']['error'] == 0)) {
-                    move_uploaded_file($_FILES['image']['tmp_name'], 'image/' . $_FILES['image']['name']);
-                    $creation->setPicture('image/' . $_FILES['image']['name']);
-                }
-
-                $creationModel->edit($creation, $id);
-                header("Location: index.php?controller=Creation&action=index");
+                $restaurant = new Restaurant;
+                $restaurant->setNom_restaurant($this->protected_values($data['nom_restaurant']));
+                $restaurant->setEmail_restaurant($this->protected_values($data['email_restaurant']));
+                $restaurant->setPassword_restaurant($this->protected_values($data['password_restaurant']));
+                $restaurant->setCp_restaurant($this->protected_values($data['cp_restaurant']));
+                $restaurant->setVille_restaurant($this->protected_values($data['ville_restaurant']));
+                $restaurant->setDescription_restaurant($this->protected_values($data['description_restaurant']));
+                $restaurant->setPlace_max_restaurant($this->protected_values($data['place_max_restaurant']));
+                $restaurant->setPrix_restaurant($this->protected_values($data['prix_restaurant']));
+                $restaurant->setMenu_restaurant($this->protected_values($data['menu_restaurant']));
+                $restaurant->setType_restaurant($this->protected_values($data['type_restaurant']));
+                $restaurant->setNote_moyenne_restaurant($this->protected_values($data['note_moyenne_restaurant']));
+                $restaurant->setId_planning($this->protected_values($data['id_planning']));
+                $restaurantModel->create($restaurant);
+                echo  json_encode(['status' => true]);
             } else {
-                echo "<h2>Erreur, les tokens ne corresponde pas ou votre session à expirer !</h2>";
+                $messageError =  "Tous les champs du formulaire ne sont pas correctement renseignés !";
+                echo  json_encode(['status' => false, 'message' => $messageError]);
             }
-        } else {
-            $list = $creationModel->findAll();
-            /**** token ****/
-            $this->generation_token();
-
-            foreach ($list as $key => $value) {
-                if ($value->id_creation == $id) {
-                    $creation->setTitle($value->title);
-                    $creation->setDescription($value->description);
-                    $creation->setCreated_at($value->created_at);
-                }
-            }
-
-            $this->render('creation/edit', ['titleArticle' => $creation->getTitle(), 'desc' => $creation->getDescription(), 'dateCreation' => $creation->getCreated_at(), 'photo' => $creation->getPicture()]);
         }
+    }
+
+
+    function update()
+    {
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Methods: POST");
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        $restaurantModel = new RestaurantModel();
+        $messageError = '';
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Récupérer les données JSON du corps de la requête
+            $json = file_get_contents('php://input');
+
+            // Convertir les données JSON en tableau PHP
+            $data = json_decode($json, true);
+
+            //tableau de qui référence toute les clés qui corresponde au champs de formulaire
+            $keys = [
+                'nom_restaurant',
+                'email_restaurant',
+                'password_restaurant',
+                'adresse_restaurant',
+                'cp_restaurant',
+                'ville_restaurant',
+                'description_restaurant',
+                'place_max_restaurant',
+                'prix_restaurant',
+                'menu_restaurant',
+                'type_restaurant',
+                'note_moyenne_restaurant',
+                'id_planning',
+            ];
+
+            //vérification que tout les champs de formulaire sont remplie
+            if (Validator::validPostSelect($data, $keys)) {
+
+                $restaurant = new Restaurant;
+                $restaurant->setNom_restaurant($this->protected_values($data['nom_restaurant']));
+                $restaurant->setEmail_restaurant($this->protected_values($data['email_restaurant']));
+                $restaurant->setPassword_restaurant($this->protected_values($data['password_restaurant']));
+                $restaurant->setCp_restaurant($this->protected_values($data['cp_restaurant']));
+                $restaurant->setVille_restaurant($this->protected_values($data['ville_restaurant']));
+                $restaurant->setDescription_restaurant($this->protected_values($data['description_restaurant']));
+                $restaurant->setPlace_max_restaurant($this->protected_values($data['place_max_restaurant']));
+                $restaurant->setPrix_restaurant($this->protected_values($data['prix_restaurant']));
+                $restaurant->setMenu_restaurant($this->protected_values($data['menu_restaurant']));
+                $restaurant->setType_restaurant($this->protected_values($data['type_restaurant']));
+                $restaurant->setNote_moyenne_restaurant($this->protected_values($data['note_moyenne_restaurant']));
+                $restaurant->setId_planning($this->protected_values($data['id_planning']));
+                $restaurantModel->update($restaurant);
+                echo  json_encode(['status' => true]);
+            } else {
+                $messageError =  "Tous les champs du formulaire ne sont pas correctement renseignés !";
+                echo  json_encode(['status' => false, 'message' => $messageError]);
+            }
+        }
+    }
+
+    function delete()
+    {
+        $id_restaurant = $_GET["id_restaurant"];
+
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+        header("Access-Control-Allow-Methods: GET");
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+        echo  json_encode(["restaurant" => (new RestaurantModel())->delete($id_restaurant)]);
     }
 }
