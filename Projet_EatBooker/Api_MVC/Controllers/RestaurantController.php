@@ -22,7 +22,7 @@ class RestaurantController extends Controller
 
     public function affichage()
     {
-        $id_restaurant = $_GET["id"];
+        $id_restaurant = $_GET['id'];
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json; charset=UTF-8");
         header("Access-Control-Allow-Methods: GET");
@@ -75,6 +75,7 @@ class RestaurantController extends Controller
                 $restaurant->setNom_restaurant($this->protected_values($data['nom_restaurant']));
                 $restaurant->setEmail_restaurant($this->protected_values($data['email_restaurant']));
                 $restaurant->setPassword_restaurant($this->protected_values($data['password_restaurant']));
+                $restaurant->setAdresse_restaurant($this->protected_values($data['adresse_restaurant']));
                 $restaurant->setCp_restaurant($this->protected_values($data['cp_restaurant']));
                 $restaurant->setVille_restaurant($this->protected_values($data['ville_restaurant']));
                 $restaurant->setDescription_restaurant($this->protected_values($data['description_restaurant']));
@@ -137,6 +138,7 @@ class RestaurantController extends Controller
                 $restaurant->setNom_restaurant($this->protected_values($data['nom_restaurant']));
                 $restaurant->setEmail_restaurant($this->protected_values($data['email_restaurant']));
                 $restaurant->setPassword_restaurant($this->protected_values($data['password_restaurant']));
+                $restaurant->setAdresse_restaurant($this->protected_values($data['adresse_restaurant']));
                 $restaurant->setCp_restaurant($this->protected_values($data['cp_restaurant']));
                 $restaurant->setVille_restaurant($this->protected_values($data['ville_restaurant']));
                 $restaurant->setDescription_restaurant($this->protected_values($data['description_restaurant']));

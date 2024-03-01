@@ -5,6 +5,7 @@ namespace App\Models;
 use Exception;
 use App\Core\DbConnect;
 use App\Entities\Restaurant;
+use PDO;
 
 class RestaurantModel extends Dbconnect
 {
@@ -19,12 +20,11 @@ class RestaurantModel extends Dbconnect
     }
 
     function findOne($id)
-    {
-        $this->request = "SELECT * FROM restaurant WHERE id_restaurant=:id_restaurant";
-        $result = $this->_connect->query($this->request);
-        $result->bindValue(':id_restaurant', $id);
-        $resultat = $result->execute();
-        $list = $result->fetch();
+    { // fixed
+        $request = $this->_connect->prepare("SELECT * FROM restaurant WHERE id_restaurant=:id_restaurant");
+        $request->bindValue(':id_restaurant', $id, PDO::PARAM_STR);
+        $request->execute();
+        $list = $request->fetch();
 
         return $list;
     }

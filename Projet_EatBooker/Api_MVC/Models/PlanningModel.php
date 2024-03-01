@@ -19,12 +19,11 @@ class PlanningModel extends Dbconnect
     }
 
     function findOne($id)
-    {
-        $this->request = "SELECT * FROM Planning WHERE id_planning=:id_planning";
-        $result = $this->_connect->query($this->request);
-        $result->bindValue(':id_planning', $id);
-        $resultat = $result->execute();
-        $list = $result->fetch();
+    { //fixed
+        $request = $this->_connect->prepare("SELECT * FROM Planning WHERE id_planning=:id_planning");
+        $request->bindValue(':id_planning', $id);
+        $request->execute();
+        $list = $request->fetch();
 
         return $list;
     }

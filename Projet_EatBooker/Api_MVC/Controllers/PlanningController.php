@@ -71,7 +71,7 @@ class PlanningController extends Controller
 
 
             //vérification que tout les champs de formulaire sont remplie
-            if (Validator::validPostSelect($data, $keys)) {
+            if (Validator::validPostSelectBool($data, $keys)) {
 
                 $planning = new Planning;
                 $planning->setLundi_am($this->protected_values($data['lundi_am']));
@@ -139,7 +139,7 @@ class PlanningController extends Controller
 
 
             //vérification que tout les champs de formulaire sont remplie
-            if (Validator::validPostSelect($data, $keys) && $id != '') {
+            if (Validator::validPostSelectBool($data, $keys) && $id != '') {
 
                 $planning = new Planning;
                 $planning->setLundi_am($this->protected_values($data['lundi_am']));

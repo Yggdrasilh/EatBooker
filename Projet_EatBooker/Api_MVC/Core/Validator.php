@@ -36,6 +36,21 @@ class Validator
         return true;
     }
 
+    //Méthode permettant de (Vérifier les BOOLEANS). Les paramètres représentent les valeurs en POST et le nom des champs 
+    public static function validPostSelectBool(array $post, array $fields): bool
+    {
+
+        // Chaque champ est parcouru
+        foreach ($fields as $field) {
+            // on teste si les champs sont vides ou non présents
+            if (!isset($post[$field])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     // Méthode permettant de tester les champs. Les paramètres représentent les valeurs en FILES et le nom des champs
     public static function validFilesSelect(array $files, array $fields): bool
     {
