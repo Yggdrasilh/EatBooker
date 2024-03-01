@@ -11,9 +11,9 @@
 
     <!-- lien feuille de style -->
 
-    <link rel="stylesheet" href="style.css">
+
     <link rel="stylesheet" href="styleJu.css">
-    <link rel="stylesheet" href="styleSim.css">
+
 
 
 
