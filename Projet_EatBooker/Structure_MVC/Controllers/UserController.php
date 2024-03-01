@@ -15,7 +15,7 @@ class UserController extends Controller
         $userPassword = $_POST['password_user'] ?? '';
 
         // Appeler l'API pour récupérer les informations utilisateur
-        $apiUrl = 'http://localhost:8888/Api_MVC/public/user';
+        $apiUrl = 'http://localhost:8888/Projet_EatBooker/Projet_EatBooker/Api_MVC/public/user';
         $apiData = file_get_contents($apiUrl);
         $userData = json_decode($apiData, true);
 
@@ -31,7 +31,7 @@ class UserController extends Controller
                 $_SESSION['role_user'] = $user['role_user'];
 
                 //    Envoyer l'utilisateur connecté vers la page d'accueil.
-                header('location:http://localhost:8888/Projet_EatBooker/Projet_EatBooker/Structure_MVC/public/');
+                header('location:http://localhost:8888/Projet_EatBooker_appli/Projet_EatBooker/Structure_MVC/public/');
             }
         }
         // echo '<pre>';
