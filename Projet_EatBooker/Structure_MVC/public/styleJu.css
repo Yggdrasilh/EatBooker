@@ -148,9 +148,12 @@ p {
 }
 
 /*********************************CSS FOOTER **********************************/
+footer {
+    background-color: #313131;
+}
 
 #footer {
-    background-color: #313131;
+
     display: flex;
     justify-content: space-evenly;
     margin-top: 0.5rem;
@@ -180,6 +183,11 @@ p {
 .lien_menu_footer:hover {
     text-decoration: none;
     color: #E9FFE0;
+}
+
+#copy {
+    text-align: center;
+    font-style: italic;
 }
 
 /* ******** @media query for mobile viewport FOOTER ********* */
@@ -235,12 +243,13 @@ p {
 
 #presentation_accueil {
     box-sizing: border-box;
-    float: inline-end;
+
     width: 90%;
     margin: 0 auto;
     margin-top: 4rem;
 
 }
+
 
 #txt_presentation {
     float: inline-end;
@@ -273,11 +282,43 @@ p {
 }
 
 /* PAGE ACCUEIL - resto recommandés */
+#resto_mieux_notes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 
-#resto_recommande {
+#tous_les_restos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#tous_restos {
+
+    color: white;
+}
+
+#tous_restos {
     background-color: #313131;
     border: #313131;
-    border-radius: 8%;
+    border-radius: 3%;
     margin-top: 2rem;
     box-shadow: #313131 2px 4px 8px;
+
+}
+
+#type_tous_restos {
+    display: flex;
+    justify-content: space-between;
+}
+
+#btn_reserver {
+    background-color: white;
+    color: #313131;
+    border: white;
 }

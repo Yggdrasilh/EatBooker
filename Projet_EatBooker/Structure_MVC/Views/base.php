@@ -91,44 +91,47 @@
 
 
         <!---------- STRUCTURE FOOTER --------------------- -->
-        <footer id="footer">
+        <footer>
+            <div id="footer">
+                <!-- colonne gauche footer - ATTENTION MODIFIER LES LIENS -->
+                <ul id="colonne_gauche_footer" class="colonne_footer">
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Page Contact</a>
+                    </li>
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Plan du site</a>
+                    </li>
 
-            <!-- colonne gauche footer - ATTENTION MODIFIER LES LIENS -->
-            <ul id="colonne_gauche_footer" class="colonne_footer">
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Page Contact</a>
-                </li>
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Plan du site</a>
-                </li>
+                </ul>
 
-            </ul>
+                <!-- colonne milieu footer - ATTENTION MODIFIER LES LIENS - reprendre lien bouton header -->
+                <ul id="colonne_milieu_footer" class="colonne_footer">
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Inscrire Mon Restaurant</a>
+                    </li>
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Vous souhaitez réserver</a>
+                    </li>
 
-            <!-- colonne milieu footer - ATTENTION MODIFIER LES LIENS - reprendre lien bouton header -->
-            <ul id="colonne_milieu_footer" class="colonne_footer">
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Inscrire Mon Restaurant</a>
-                </li>
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Vous souhaitez réserver</a>
-                </li>
+                </ul>
 
-            </ul>
+                <!-- colonne droite footer - ATTENTION MODIFIER LES LIENS -->
+                <ul id="colonne_droite_footer" class="colonne_footer">
 
-            <!-- colonne droite footer - ATTENTION MODIFIER LES LIENS -->
-            <ul id="colonne_droite_footer" class="colonne_footer">
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Mentions Légales</a>
+                    </li>
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Politique de Confidentialité</a>
+                    </li>
 
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Mentions Légales</a>
-                </li>
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Politique de Confidentialité</a>
-                </li>
 
-                <li class="menu_footer">
-                    EatBooker Copyright 2024
-                </li>
-            </ul>
+                </ul>
+
+            </div>
+            <p class="menu_footer" id="copy">
+                EatBooker Copyright 2024
+            </p>
 
         </footer>
 
