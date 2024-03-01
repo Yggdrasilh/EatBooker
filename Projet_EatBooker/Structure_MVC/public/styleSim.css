@@ -21,6 +21,10 @@
     width: 20em !important;
 }
 
+.profilcard {
+    margin: 2%;
+}
+
 @media screen and (max-width: 480px) {
     #wrapper {
         width: 480px;
