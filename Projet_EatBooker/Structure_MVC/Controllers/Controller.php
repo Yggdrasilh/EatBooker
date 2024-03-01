@@ -10,6 +10,9 @@ use App\Models\CreationModel;
 
 abstract class Controller
 {
+    protected $baseUrlApi = "http://application/Api_MVC/public";  // Base d'url pour l'API
+    protected $baseUrlSite = "http://application/Projet_EatBooker_2s/Projet_EatBooker/Structure_MVC/public"; //base d'url pour le Site
+
     protected function render(string $path, array $data = [])
     {
         extract($data);
