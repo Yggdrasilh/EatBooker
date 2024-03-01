@@ -1,9 +1,13 @@
 /* Navigation */
+#wrapper {
+    width: 1480px;
+}
 
 #navigation {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
 }
 
 #menu-icon {
@@ -13,9 +17,21 @@
     /* Masquer le menu burger par défaut */
 }
 
+.btnNav {
+    width: 20em !important;
+}
+
 @media screen and (max-width: 480px) {
+    #wrapper {
+        width: 480px;
+    }
+
     #navigation {
         display: none;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
     }
 
     /* Afficher le menu burger */
@@ -25,4 +41,20 @@
         width: 30px;
         height: 30px;
     }
+}
+
+.btnNav {
+    width: 100%;
+    background-color: #313131 !important;
+    text-decoration: none !important;
+    color: white;
+}
+
+.btnNav:hover {
+    background-color: white !important;
+
+}
+
+textBtnNav {
+    text-decoration: none;
 }

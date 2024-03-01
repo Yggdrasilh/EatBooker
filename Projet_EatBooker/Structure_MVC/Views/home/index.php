@@ -2,4 +2,4 @@
 
 $title = ' EatBooker - Accueil';
 
-echo "coucou";
+echo "Bonjour " . $_SESSION['prenom_user']; ?><a href="index.php?controller=user&action=logout"> Se Deconnecter</a>
