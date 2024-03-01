@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Validator;
 use App\Controllers\Controller;
+use PasswordHash;
 
 class UserController extends Controller
 {
@@ -116,5 +117,73 @@ class UserController extends Controller
 
         $this->render('user/formConnexion');
     }
+
+    //                                      ***********************
+    public function profil()
+    {
+
+        $this->render('user/profil');
+    }
+
+    //                                      ***********************
+    // public function updateMdpProfil()
+    // {
+
+
+    //     // Récupérer les données du formulaire
+    //     $oldPassword = $_POST['password_user'] ?? '';
+    //     $newPassword = $_POST['new_password_user'] ?? '';
+    //     $confirmNewPassword = $_POST['confirm_new_password_user'] ?? '';
+
+    //     // Vérifier que les champs ne sont pas vides
+    //     if (!empty($oldPassword) && !empty($newPassword) && !empty($confirmNewPassword)) {
+    //         // Vérifier que le nouveau mot de passe correspond à la confirmation
+    //         if ($newPassword === $confirmNewPassword) {
+    //             // Hacher le nouveau mot de passe
+    //             $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+    //             if (password_verify($oldPassword, $_SESSION['password_hash'])) {
+    //                 // Hacher le nouveau mot de passe
+    //                 $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+    //                 // Mettre à jour le mot de passe haché en session
+    //                 $_SESSION['password_hash'] = $hashedPassword;
+
+    //                 // Construire l'URL de l'API avec l'identifiant de l'utilisateur
+    //                 $apiUrl = 'http://localhost:8888/Api_MVC/public/user/update/' . $_SESSION['id_user'];
+
+    //                 // Envoyer les données à l'API pour mettre à jour le mot de passe
+    //                 $postData = array(
+    //                     'id_user' => $_SESSION['id_user'],
+    //                     'nom_user' => $_SESSION['nom_user'],
+    //                     'prenom_user' => $_SESSION['prenom_user'],
+    //                     'password_user' => $hashedPassword,
+    //                     'role_user' => $_SESSION['role_user']
+    //                 );
+
+    //                 $options = array(
+    //                     'http' => array(
+    //                         'method' => 'POST',
+    //                         'header' => 'Content-type: application/x-www-form-urlencoded',
+    //                         'content' => http_build_query($postData)
+    //                     )
+    //                 );
+
+    //                 $context = stream_context_create($options);
+    //                 $result = file_get_contents($apiUrl, false, $context);
+
+    //                 // Afficher un message de succès à l'utilisateur
+    //                 echo "Mot de passe mis à jour avec succès !";
+    //             } else {
+    //                 // Afficher un message d'erreur si les mots de passe ne correspondent pas
+    //                 echo "Les mots de passe ne correspondent pas.";
+    //             }
+    //         } else {
+    //             // Afficher un message d'erreur si un champ est vide
+    //             echo "Veuillez remplir tous les champs du formulaire.";
+    //         }
+
+    //         // Rendre la vue du formulaire
+    //         $this->render('user/formMdp');
+    //     }
+    // }
 }
-//                                      ***********************
