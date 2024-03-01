@@ -1,47 +1,40 @@
 <?php
+// Fonction pour générer la navigation en fonction du rôle de l'utilisateur
+function generateNavigation($role)
+{
+    switch ($role) {
+        case 'user':
+            $nav_elements = array(
+                '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Accueil</button></a>',
+                '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Page profil</button></a>',
+                '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Trouver un restaurant</button></a>',
+                '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Mes restaurants préférés</button></a>',
+            );
+            break;
+        case 'admin':
+            $nav_elements = array(
+                '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Accueil</button></a>',
+                '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Gestion Restaurant</button></a>',
+                '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Gestion des Utilisateurs</button></a>',
+                '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Modération des commentaires</button></a>',
+            );
+            break;
+        case 'restaurant':
+            $nav_elements = array(
+                '<a class="nav" href="#"> <button type="button" class="btn btn-light btnNav"> Accueil </button> </a>',
+                '<a class="nav" href="#"> <button type="button" class="btn btn-light btnNav"> Page du Restaurant </button> </a>',
+                '<a class="nav" href="#"> <button type="button" class="btn btn-light btnNav"> Planning du Restaurant </button> </a>',
+                '<a class="nav" href="#"> <button type="button" class="btn btn-light btnNav"> Gerer les demandes de reservation </button> </a>',
+                '<a class="nav" href="#"> <button type="button" class="btn btn-light btnNav"> Les avis </button> </a>'
+            );
+            break;
+        default:
+            $nav_elements = array(); // Cas par défaut: aucune navigation
+            break;
+    }
 
-// On stocke dans un tableau chaques bouton pour la nav selon nos entités.
-
-// Les éléments de navigation pour l'utilisateur "user"
-$user_nav_elements = array(
-    '<a class="nav" href="#"><button type="button" class="btn btn-light">Accueil</button></a>',
-    '<a class="nav" href="#"><button type="button" class="btn btn-light">Page profil</button></a>',
-    '<a class="nav" href="#"><button type="button" class="btn btn-light">Trouver un restaurant</button></a>',
-    '<a class="nav" href="#"><button type="button" class="btn btn-light">Mes restaurants préférés</button></a>',
-);
-
-// Les éléments de navigation pour l'admin"
-$admin_nav_elements = array(
-    '<a class="nav" href="#"><button type="button" class="btn btn-light">Accueil</button></a>',
-    '<a class="nav" href="#"><button type="button" class="btn btn-light">Gestion Restaurant</button></a>',
-    '<a class="nav" href="#"><button type="button" class="btn btn-light">Gestion des Utilisateurs</button></a>',
-    '<a class="nav" href="#"><button type="button" class="btn btn-light">Modération des commentaires</button></a>',
-);
-// Les éléments de navigation pour l'admin.
-$restaurant_nav_elements = array(
-    '<a class="nav" href="#"> <button type="button" class="btn btn-light"> Accueil </button> </a>',
-    '<a class="nav" href="#"> <button type="button" class="btn btn-light"> Page du Restaurant </button> </a>',
-    '<a class="nav" href="#"> <button type="button" class="btn btn-light"> Planning du Restaurant </button> </a>',
-    '<a class="nav" href="#"> <button type="button" class="btn btn-light"> Gerer les demandes de reservation </button> </a>',
-    '<a class="nav" href="#"> <button type="button" class="btn btn-light"> Les avis </button> </a>'
-);
-
-// On conditionne.
-if ($_SESSION['role_user'] == 'user') {
-    $nav_elements = $user_nav_elements;
-} elseif ($_SESSION['role_user'] == 'admin') {
-    $nav_elements = $admin_nav_elements;
-} elseif ($_SESSION['role_user'] == 'restaurant') {
-    $nav_elements = $restaurant_nav_elements;
-};
-
-
-// On construit la nav 
-?>
-
-    <?php
-    // On boucle pour afficher les elements. 
+    // Générer la navigation
     foreach ($nav_elements as $nav_element) {
         echo $nav_element;
     }
-    ?>
+}
