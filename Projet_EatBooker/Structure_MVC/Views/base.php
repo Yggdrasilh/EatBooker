@@ -20,9 +20,14 @@
 
 
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.google.com/specimen/Libre+Baskerville?query=libre" rel="stylesheet">
+
+
 
     <!--  liens font awesome et google fonts -->
-    <script src="https://kit.fontawesome.com/cff33ecd93.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2a089d2673.js" crossorigin="anonymous"></script>
     <script src="https://fonts.google.com/specimen/Libre+Baskerville?query=libre"></script>
 </head>
 
@@ -169,6 +174,7 @@
 
     <!-- CONNEXION FICHIER SCRIPT.JS DANS DOSSIER JS -->
     <script src="js/scripts.js"></script>
+    <script src="js/scriptFavori.js"></script>
 
     <!-- CONNEXION js bootstrap -->
 
