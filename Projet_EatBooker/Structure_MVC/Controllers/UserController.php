@@ -258,3 +258,5 @@ class UserController extends Controller
         $this->render('user/formProfil');
     }
 }
+
+//                                  ********************
