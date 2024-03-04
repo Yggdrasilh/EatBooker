@@ -1,9 +1,7 @@
-
 <?php
 
 $title = 'EatBooker - Accueil';
-                      echo "Bonjour " . $_SESSION['prenom_user']; ?><a href="index.php?controller=user&action=logout"> Se Deconnecter</a>;
-?>
+echo "Bonjour " . $_SESSION['prenom_user']; ?><a href="index.php?controller=user&action=logout"> Se Deconnecter</a>;
 <section id="section_accueil">
     <h1 id="titre_accueil">Bienvenue sur EatBooker</h1>
     <div>
@@ -38,14 +36,14 @@ $title = 'EatBooker - Accueil';
                         <img id="img_tous_restos" src="images/imageAccueil.png" class="card-img-top" alt="image du restaurant">
                         <div class="card-body">
                             <div id="type_tous_restos">
-                                <h5 id="type_tous_restoss" class="card-title"><?= $resto['type_restaurant'] ?> </h5>
+                                <h5 id="type_tous_restos" class="card-title"><?= $resto['type_restaurant'] ?> </h5>
                                 <p id="note_tous_restos"><?= $resto['note_moyenne_restaurant'] ?>/5</p>
                             </div>
                             <h3 id="nom_tous_restos" class="card-title"><?= $resto['nom_restaurant'] ?></h3>
                             <p id="ville_tous_restos" class="card-text"><?= $resto['ville_restaurant'] ?></p>
                             <p id="prix_tous_restos" class="card-text">20-35€</p>
-                            <!-- modifier route -->
-                            <a href="index.php?controller=user&action=reserver&id=<?= $resto['id_restaurant'] ?>" class="btn btn-primary btn-reserver" id="btn_reserver">Réserver</a>
+
+                            <a href="index.php?controller=restaurant&action=find&id=<?= $resto['id_restaurant'] ?>" class="btn btn-primary btn-reserver" id="btn_reserver">Réserver</a>
                         </div>
                     </div>
                 <?php
@@ -84,8 +82,8 @@ $title = 'EatBooker - Accueil';
                             <h3 id="nom_tous_restos" class="card-title"><?= $valueResto['nom_restaurant'] ?></h3>
                             <p id="ville_tous_restos" class="card-text"><?= $valueResto['ville_restaurant'] ?></p>
                             <p id="prix_tous_restos" class="card-text">20-35€</p>
-                            <!-- modifier route -->
-                            <a href="index.php?controller=user&action=re????????????????????" class="btn btn-primary" id="btn_reserver">Réserver</a>
+
+                            <a href="index.php?controller=restaurant&action=find&id=<?= $valueResto['id_restaurant'] ?>" class="btn btn-primary" id="btn_reserver">Réserver</a>
                         </div>
                     </div>
 
@@ -100,4 +98,3 @@ $title = 'EatBooker - Accueil';
     </div>
 
 </section>
-
