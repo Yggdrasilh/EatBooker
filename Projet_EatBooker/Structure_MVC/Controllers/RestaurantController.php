@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Core\Validator;
+
 class RestaurantController extends Controller
 {
 
@@ -65,5 +67,13 @@ class RestaurantController extends Controller
         }
 
         $this->render('admin/gestionRestaurant', ['restoValid' => $restaurantValid, 'restoAValider' => $restaurantAValider]);
+    }
+
+    public function inscriptionRestaurant()
+    {
+        if (Validator::validPostGlobal()) {
+        } else {
+            $this->render('restaurant/inscription', ['renseignerPlanning' => false]);
+        }
     }
 }
