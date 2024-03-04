@@ -30,7 +30,12 @@ echo "Bonjour " . $_SESSION['prenom_user']; ?><a href="index.php?controller=user
         $nbResto = 0;
         while ($nbResto < 5) :
 
-            foreach ($restoData['restaurant'] as $resto) : ?>
+            foreach ($restoData['restaurant'] as $resto) :
+                // var_dump($restoData);
+                // die; 
+        ?>
+
+
                 <?php if ($resto['note_moyenne_restaurant'] >= 4) : ?>
                     <!-- Afficher les informations du restaurant -->
                     <div id="tous_restos" class="card card-container" style="width: 13rem;">

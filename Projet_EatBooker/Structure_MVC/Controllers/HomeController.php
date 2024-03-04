@@ -12,6 +12,7 @@ class HomeController extends Controller
         $restoData = json_decode($apiData, true);
 
         // var_dump($restoData);
+        // die;
 
 
         $this->render('home/index', ['restoData' => $restoData]);
