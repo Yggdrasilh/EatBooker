@@ -50,10 +50,26 @@
 
 
                     <!--bouton inscription/connexion user et admin ATTENTION CHANGER LE LIEN mettre lien vers formulaire de connexion -->
-                    <a href="index.php?controller=User&action=login" id="connexion_user">
-                        <button type="button" class="btn btn-light" id="connexion_user">
-                            <p class="text_button">Connexion/Inscription</p>
-                        </button>
+                    <?php
+                    if (empty($_SESSION['id_user'])) {
+                    ?>
+                        <a href="index.php?controller=User&action=login" id="connexion_user">
+                            <button type="button" class="btn btn-light" id="connexion_user">
+                                <p class="text_button">Connexion/Inscription</p>
+                            </button>
+                        </a>
+                    <?php
+                    } else {
+                    ?>
+                        <a href="index.php?controller=User&action=logout" id="deconnexion_user">
+                            <button type="button" class="btn btn-light" id="connexion_user">
+                                <p class="text_button">Deconnexion</p>
+                            </button>
+                        </a>
+                    <?php
+                    }
+                    ?>
+
                     </a>
                 </div>
 

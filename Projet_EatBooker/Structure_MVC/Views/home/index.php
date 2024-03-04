@@ -1,8 +1,10 @@
-
 <?php
 
 $title = 'EatBooker - Accueil';
-                      echo "Bonjour " . $_SESSION['prenom_user']; ?><a href="index.php?controller=user&action=logout"> Se Deconnecter</a>;
+if ($_SESSION == TRUE) {
+    echo "Bonjour " . $_SESSION['prenom_user']; ?>
+<?php }
+// var_dump($_SESSION); 
 ?>
 <section id="section_accueil">
     <h1 id="titre_accueil">Bienvenue sur EatBooker</h1>
@@ -100,4 +102,3 @@ $title = 'EatBooker - Accueil';
     </div>
 
 </section>
-

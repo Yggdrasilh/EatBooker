@@ -21,3 +21,22 @@ $title = "EatBooker - Changer le mot de passe";
     <button class="btn btn-primary" type="submit">Valider</button>
 
 </form>
+
+<?php
+echo '<pre>';
+var_dump($newPassword);
+echo '</pre>';
+echo '<pre>';
+var_dump($confirmNewPassword);
+echo '</pre>';
+echo '<pre>';
+var_dump($oldPassword);
+echo '</pre>';
+echo '<pre>';
+var_dump($hashedPassword);
+echo '</pre>';
+echo '<pre>';
+var_dump($_SESSION['password_user']);
+echo '</pre>';
+
+?>
