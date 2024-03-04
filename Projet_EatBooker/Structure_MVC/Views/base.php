@@ -12,6 +12,7 @@
     <!-- lien feuille de style -->
 
 
+
     <link rel="stylesheet" href="styleJu.css">
 
 
@@ -48,7 +49,7 @@
 
 
                     <!--bouton inscription/connexion user et admin ATTENTION CHANGER LE LIEN mettre lien vers formulaire de connexion -->
-                    <a href="#" id="connexion_user">
+                    <a href="index.php?controller=User&action=login" id="connexion_user">
                         <button type="button" class="btn btn-light" id="connexion_user">
                             <p class="text_button">Connexion/Inscription</p>
                         </button>
@@ -68,11 +69,12 @@
         <nav id='navigation'>
 
             <?php
-
-            $navigation = isset($_SESSION['id_user']) ? $nav : '';
-
-            echo $navigation;
-            ?> <!-- menu burger pour mobile media queries 480px -->
+            // Si Role user == BDD on fait la fonction generateNavigation par rapport au Role_user
+            if (isset($_SESSION['role_user'])) {
+                generateNavigation($_SESSION['role_user']);
+            }
+            // var_dump($_SESSION);
+            ?>
         </nav>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="menu-icon">
             <path fill="#313131" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
