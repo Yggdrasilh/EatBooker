@@ -44,36 +44,41 @@ class AdminController extends Controller
         }
     }
 
-    public function update($id_user)
-    {
-        //     $apiUrl = 'http://localhost:8888/Projet_EatBooker/Projet_EatBooker/Api_MVC/public/user/update/' . $id_user;
+    // public function update($id_user)
+    // {
+    //     $apiUrl = 'http://localhost:8888/Projet_EatBooker/Projet_EatBooker/Api_MVC/public/user/update/' . $id_user;
 
-        //     // Récupérer les données envoyées par la requête AJAX
-        //     $inputJson = file_get_contents('php://input');
-        //     $Data = json_decode($inputJson, true);
-        //     $id_user = $Data['id_user'];
-        //     // var_dump($Data);
-        //     // die;
-        //     // Appeler l'API pour ajouter le restaurant aux favoris de l'utilisateur
+    //     // Récupérer les données envoyées par la requête AJAX
+    //     $inputJson = file_get_contents('php://input');
+    //     $Data = json_decode($inputJson, true);
+    //     // var_dump($Data);
+    //     // die;
+    //     // Appeler l'API pour ajouter le restaurant aux favoris de l'utilisateur
 
-        //     $options = [
-        //         'http' => [
-        //             'header'  => 'Content-Type: application/json',
-        //             'method'  => 'POST',
-        //             'content' => json_encode(['id_user' => $id_user] + $Data),
-        //         ]
-        //     ];
-        //     $context = stream_context_create($options);
-        //     $result = file_get_contents($apiUrl, false, $context);
-        //     // Vérifier le résultat de la requête
-        //     if ($result === FALSE) {
-        //         // Gestion des erreurs
-        //         echo "Une erreur s'est produite.";
-        //     } else {
-        //         // Traitement de la réponse de l'API
-        //         $responseData = json_decode($result, true);
-        //         // Répondre à la requête AJAX avec un objet JSON indiquant si l'opération a réussi ou non
-        //         echo json_encode(['success' => isset($responseData['success']) && $responseData['success'] === true]);
-        //     }
-    }
+    //     $keys = ['nom_user', 'prenom_user', 'email_user', 'role_user'];
+    //     if (!Validator::validPostSelect($Data, $keys)) {
+    //         echo json_encode(['success' => false, 'message' => 'Tous les du formulaire ne sont pas correctement renseignés.']);
+    //         exit();
+
+    //         $options = [
+    //             'http' => [
+    //                 'header'  => 'Content-Type: application/json',
+    //                 'method'  => 'PUT',
+    //                 'content' => json_encode($Data),
+    //             ]
+    //         ];
+    //         $context = stream_context_create($options);
+    //         $result = file_get_contents($apiUrl, false, $context);
+    //         // Vérifier le résultat de la requête
+    //         if ($result === FALSE) {
+    //             // Gestion des erreurs
+    //             echo "Une erreur s'est produite.";
+    //         } else {
+    //             // Traitement de la réponse de l'API
+    //             $responseData = json_decode($result, true);
+    //             // Répondre à la requête AJAX avec un objet JSON indiquant si l'opération a réussi ou non
+    //             echo json_encode(['success' => isset($responseData['success']) && $responseData['success'] === true]);
+    //         }
+    //     }
+    // }
 }

@@ -27,7 +27,7 @@
 
 //     // Envoie les données au serveur en utilisant la méthode fetch()
 //     fetch("http://localhost:8888/Projet_EatBooker_appli/Projet_EatBooker/Structure_MVC/public/index.php?controller=admin&action=update&id_user" + userId, {
-//         method: 'POST',
+//         method: 'PUT',
 //         body: JSON.stringify({
 //             // les valeurs à gauche sont celles inscrites dans la base de données
 //             nom_user: nomUser,
