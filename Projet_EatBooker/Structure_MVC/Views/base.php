@@ -149,6 +149,7 @@
 
     <!-- CONNEXION FICHIER SCRIPT.JS DANS DOSSIER JS -->
     <script src="js/scripts.js"></script>
+    <script src="js/scriptsAde.js"></script>
 
     <!-- CONNEXION js bootstrap -->
 
