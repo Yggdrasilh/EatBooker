@@ -53,7 +53,7 @@ class UserController extends Controller
         // detruire la session en cliquant sur le lien 
         session_destroy();
 
-        header('location:' . $this->baseUrlSite . 'index.php?controller=User&action=login');
+        header('location:' . $this->baseUrlSite . '/index.php?controller=User&action=login');
     }
     //                                      ******************
 
@@ -127,7 +127,9 @@ class UserController extends Controller
     public function profil()
     {
 
-        $this->render('user/profil');
+
+
+        // $this->render('user/profil');
     }
 
 

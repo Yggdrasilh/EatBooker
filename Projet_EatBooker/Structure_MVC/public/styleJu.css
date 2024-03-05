@@ -37,6 +37,7 @@ img {
 body {
 
     background-color: #E9FFE0;
+    width: 95%;
 }
 
 
@@ -463,12 +464,22 @@ footer {
 #favori {
     border: none !important;
     margin-left: 0.3em;
-}
-
-#favori_coeur {
-    color: none !important;
+    background-color: rgba(255, 255, 255, 0);
 
 }
+
+.fa-solid {
+    color: rgba(7, 7, 7, 0.461);
+
+}
+
+.favoriValide {
+    color: #63E6BE !important;
+
+
+
+}
+
 
 #fiche_resto {
     display: flex !important;

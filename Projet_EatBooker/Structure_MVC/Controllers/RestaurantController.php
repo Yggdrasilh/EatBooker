@@ -22,7 +22,9 @@ class RestaurantController extends Controller
         $restaurantData = json_decode($apiData, true);
         // var_dump($restaurantData);
         // die;
-        // lecture API - restaurant
+
+
+        // récupération commentaires
 
         $apiUrl = $this->baseUrlApi . '/Comments/find/' . $restoId;
         $apiData = file_get_contents($apiUrl);
@@ -32,31 +34,39 @@ class RestaurantController extends Controller
         $this->render('restaurant/find', ['restaurantData' => $restaurantData, 'commentsData' => $commentsData]);
     }
 
-    public function addFavori($id)
+    // Ajouter un restaurant aux favoris de l'utilisateur
+    public function addFavori()
     {
-        $restoId = $id;
-        $userid = $_SESSION['id_user'];
+        // Récupérer les données envoyées par la requête AJAX
+        $inputJson = file_get_contents('php://input');
+        $inputData = json_decode($inputJson, true);
 
-        $apiUrl = $this->baseUrlApi . '/favori/update/' . $restoId;
+        $userId = $inputData['id_user'];
+        $restaurantId = $inputData['id_restaurant'];
 
-        // Envoyer les données à l'API pour mettre à jour le mot de passe
-        $postData = array(
+        // Appeler l'API pour ajouter le restaurant aux favoris de l'utilisateur
+        $api = $this->baseUrlApi . '/favori/add';
 
-            'id_user' =>  $userid,
-
-            'id_restaurant' => $restoId
-        );
-
-        $options = array(
-            'http' => array(
-                'method' => 'POST',
-                'header' => ['Content-type: application/json'],
-                'content' => json_encode($postData)
-            )
-        );
+        $options = [
+            'http' => [
+                'header'  => 'Content-Type: application/json',
+                'method'  => 'POST',
+                'content' => json_encode(['id_user' => $userId, 'id_restaurant' => $restaurantId])
+            ]
+        ];
 
         $context = stream_context_create($options);
-        $result = file_get_contents($apiUrl, true, $context);
-        $convert = json_decode($result, true);
+        $result = file_get_contents($api, false, $context);
+
+        // Vérifier le résultat de la requête
+        if ($result === FALSE) {
+            // Gestion des erreurs
+            echo "Une erreur s'est produite.";
+        } else {
+            // Traitement de la réponse de l'API
+            $responseData = json_decode($result, true);
+            // Répondre à la requête AJAX avec un objet JSON indiquant si l'opération a réussi ou non
+            echo json_encode(['success' => isset($responseData['success']) && $responseData['success'] === true]);
+        }
     }
 }

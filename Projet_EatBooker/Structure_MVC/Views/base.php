@@ -41,8 +41,8 @@
             <div id="header_logo_connexion">
 
 
-                <!-- logo ATTENTION MODIFIER LE LIEN ajout lien vers accueil-->
-                <a href="#"><img src="../public/images/logoSansFond.png" alt="logo eat booker" id="logo_header"></a>
+                <!-- logo -->
+                <a href="index.php"><img src="../public/images/logoSansFond.png" alt="logo eat booker" id="logo_header"></a>
 
                 <div id="header_connexion">
 
