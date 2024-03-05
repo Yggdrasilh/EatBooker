@@ -1,5 +1,6 @@
 <?php
 // Fonction pour générer la navigation en fonction du rôle de l'utilisateur
+
 function generateNavigation($role)
 {
     switch ($role) {
