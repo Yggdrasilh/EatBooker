@@ -10,7 +10,9 @@ class AdminController extends Controller
     public function findAll()
     {
         // Appeler l'API pour récupérer les informations utilisateur
+
         $apiUrl = $this->baseUrlApi . '/user';
+
         $apiData = file_get_contents($apiUrl);
         // var_dump($apiData);
         // die;
@@ -27,7 +29,9 @@ class AdminController extends Controller
 
     public function delete($id_user)
     {
+
         $apiUrl = $this->baseUrlApi . '/delete/' . $id_user;
+
         $apiData = file_get_contents($apiUrl);
         // var_dump($apiData);
         // die;

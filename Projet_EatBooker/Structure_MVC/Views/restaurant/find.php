@@ -1,19 +1,25 @@
 <?php
 
 $title = 'EatBooker ' . $restaurantData['restaurant']['nom_restaurant'];
-// echo "Bonjour " . $_SESSION['prenom_user']; 
+
+// var_dump($_SESSION['id_user'])
+echo "Bonjour " . $_SESSION['prenom_user'];
+?>
+
+
 
 ?>
 <section id="section_fiche_resto">
 
     <div class="container-fluid" id="fiche_resto">
+
         <h1 id="titre_fiche_resto">Restaurant <?= $restaurantData['restaurant']['nom_restaurant'] ?></h1>
 
-        <form action="index.php?controller=restaurant&action=addFavori&id=<?= $restaurantData['restaurant']['id_restaurant'] ?>" method="post" id="ajout_favori">
-            <button id="favori">
-                <i id="favori_coeur" class="fa-regular fa-heart"></i>
 
-
+        <form id="ajout_favori" method="post">
+            <button id="favori" type="submit">
+                <!-- Icône du cœur avec l'ID du restaurant stocké  id user dans un attribut de données -->
+                <i id="favori_coeur" class="fa-solid fa-heart fa-2xl" data-restaurant-id="<?= $restaurantData['restaurant']['id_restaurant'] ?>" data-user-id="<?= $_SESSION['id_user'] ?>"></i>
             </button>
         </form>
 
@@ -51,6 +57,7 @@ $title = 'EatBooker ' . $restaurantData['restaurant']['nom_restaurant'];
     <div id="comment_restaurant" class="container-fluid">
         <h3 id="note_fiche_resto" class="card-title">Note : <?= $restaurantData['restaurant']['note_moyenne_restaurant'] ?>/5</h3>
 
+
         <div id='commFindAll'>
             <h3>Commentaires : </h3>
 
@@ -65,6 +72,7 @@ $title = 'EatBooker ' . $restaurantData['restaurant']['nom_restaurant'];
                 </div>
             <?php } ?>
         </div>
+
 
 
     </div>

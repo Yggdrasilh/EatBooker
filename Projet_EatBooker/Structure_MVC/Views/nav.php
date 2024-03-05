@@ -16,7 +16,7 @@ function generateNavigation($role)
             $nav_elements = array(
                 '<a class="nav" href="http://localhost:8888/Projet_EatBooker/Projet_EatBooker/Structure_MVC/public/"><button type="button" class="btn btn-light btnNav">Accueil</button></a>',
                 '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Gestion Restaurant</button></a>',
-                '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Gestion des Utilisateurs</button></a>',
+                '<a class="nav" href="index.php?controller=admin&action=findAll"><button type="button" class="btn btn-light btnNav">Gestion des Utilisateurs</button></a>',
                 '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Modération des commentaires</button></a>',
             );
             break;

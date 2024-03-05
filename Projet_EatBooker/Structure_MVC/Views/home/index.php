@@ -48,8 +48,18 @@ if ($_SESSION == TRUE) {
                             <h3 id="nom_tous_restos" class="card-title"><?= $resto['nom_restaurant'] ?></h3>
                             <p id="ville_tous_restos" class="card-text"><?= $resto['ville_restaurant'] ?></p>
                             <p id="prix_tous_restos" class="card-text">20-35€</p>
+                            <?php
 
-                            <a href="index.php?controller=restaurant&action=find&id=<?= $resto['id_restaurant'] ?>" class="btn btn-primary btn-reserver" id="btn_reserver">Réserver</a>
+                            // si le user n'est pas connecté renvoie vers le formulaire de connexion
+                            if (empty($_SESSION['id_user'])) {
+                                echo ' <a href="index.php?controller=User&action=login" id="btn_reserver" class="btn btn-primary btn-reserver">Réserver</a>';
+                            } else {
+                                // sinon affichage de la fiche restaurant
+                            ?>
+                                <a href="index.php?controller=restaurant&action=find&id=<?= $resto['id_restaurant'] ?>" class="btn btn-primary btn-reserver" id="btn_reserver">Réserver</a>
+                            <?php
+                            } ?>
+
                         </div>
                     </div>
                 <?php
@@ -89,7 +99,13 @@ if ($_SESSION == TRUE) {
                             <p id="ville_tous_restos" class="card-text"><?= $valueResto['ville_restaurant'] ?></p>
                             <p id="prix_tous_restos" class="card-text">20-35€</p>
 
-                            <a href="index.php?controller=restaurant&action=find&id=<?= $valueResto['id_restaurant'] ?>" class="btn btn-primary" id="btn_reserver">Réserver</a>
+                            <?php
+                            if (empty($_SESSION['id_user'])) {
+                                echo ' <a href="index.php?controller=User&action=login" id="btn_reserver" class="btn btn-primary btn-reserver">Réserver</a>';
+                            } else { ?>
+                                <a href="index.php?controller=restaurant&action=find&id=<?= $valueResto['id_restaurant'] ?>" class="btn btn-primary btn-reserver" id="btn_reserver">Réserver</a>
+                            <?php
+                            } ?>
                         </div>
                     </div>
 

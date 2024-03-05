@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="styleJu.css">
     <link rel="stylesheet" href="styleSim.css">
+    <link rel="stylesheet" href="styleAde.css">
 
 
 
@@ -41,8 +42,8 @@
             <div id="header_logo_connexion">
 
 
-                <!-- logo ATTENTION MODIFIER LE LIEN ajout lien vers accueil-->
-                <a href="#"><img src="../public/images/logoSansFond.png" alt="logo eat booker" id="logo_header"></a>
+                <!-- logo -->
+                <a href="index.php"><img src="../public/images/logoSansFond.png" alt="logo eat booker" id="logo_header"></a>
 
                 <div id="header_connexion">
 
@@ -174,7 +175,9 @@
 
     <!-- CONNEXION FICHIER SCRIPT.JS DANS DOSSIER JS -->
     <script src="js/scripts.js"></script>
-    <script src="js/scriptFavori.js"></script>
+
+    <script src="js/scriptsAde.js"></script>
+
 
     <!-- CONNEXION js bootstrap -->
 
