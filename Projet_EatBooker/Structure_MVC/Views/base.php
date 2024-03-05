@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="styleJu.css">
     <link rel="stylesheet" href="styleSim.css">
+    <link rel="stylesheet" href="styleAde.css">
 
 
 
@@ -174,7 +175,9 @@
 
     <!-- CONNEXION FICHIER SCRIPT.JS DANS DOSSIER JS -->
     <script src="js/scripts.js"></script>
-    <script src="js/scriptFavori.js"></script>
+
+    <script src="js/scriptsAde.js"></script>
+
 
     <!-- CONNEXION js bootstrap -->
 
