@@ -1,11 +1,14 @@
 <?php
 
 $title = 'EatBooker ' . $restaurantData['restaurant']['nom_restaurant'];
+
 // var_dump($_SESSION['id_user'])
 echo "Bonjour " . $_SESSION['prenom_user'];
 ?>
 
 
+
+?>
 <section id="section_fiche_resto">
 
     <div class="container-fluid" id="fiche_resto">
@@ -54,10 +57,42 @@ echo "Bonjour " . $_SESSION['prenom_user'];
     <div id="comment_restaurant" class="container-fluid">
         <h3 id="note_fiche_resto" class="card-title">Note : <?= $restaurantData['restaurant']['note_moyenne_restaurant'] ?>/5</h3>
 
-        <h3>Commentaires : </h3>
-        <h5 id="titreComment_fiche_resto" class="card-title"><?= $commentsData['comments']['titre_comments']; ?> </h5>
-        <p id="comment_fiche_resto" class="card-title"><?= $commentsData['comments']['corps_comments']; ?> </p>
-        <a href="index.php?controller=comments&action=addComments&id=<?= $restaurantData['restaurant']['id_restaurant'] ?>">
-            <button id="ajout_comments" type="submit" class="btn btn-light">Ajouter un commentaire</button></a>
+
+        <div id='commFindAll'>
+            <h3>Commentaires : </h3>
+
+            <?php foreach ($commentsData as $comment) {
+            ?>
+
+                <div class="comment">
+                    <h4 class="comment-title"><b>Par:</b> <?php echo $comment['prenom_user']; ?></h4>
+                    <h4 class="comment-title"><b>Titre:</b> <?php echo $comment['titre_comments']; ?></h4>
+                    <h5 class="comment-body"><b> Commentaire: </b><?php echo $comment['corps_comments']; ?></h5>
+                    <button type="button" class="btn btn-danger"> Signaler?</button>
+                </div>
+            <?php } ?>
+        </div>
+
+
+
     </div>
 </section>
+
+<div id='Commentaire'>
+    <h3> J'ajoute un commentaire :</h3>
+
+    <!-- Penser a envoyer ses requetes POST vers son propre controlleur.  -->
+
+    <form class="formadd" id="envoyer" action="index.php?controller=Comments&action=addComments&id=<?= $restaurantData['restaurant']['id_restaurant'] ?>" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="id">Titre du commentaire </label>
+            <input class="form-control" id="titre" type="text" name="titre">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="password">Commentaire </label>
+            <input class="form-control" id="commentaire" type="text" name="commentaire">
+        </div>
+
+        <button name="valider" class="btn btn-primary" type="submit">Valider</button>
+
+    </form>
