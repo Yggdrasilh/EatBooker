@@ -8,7 +8,7 @@ echo "Bonjour " . $_SESSION['prenom_user'];
 
 
 
-?>
+
 <section id="section_fiche_resto">
 
     <div class="container-fluid" id="fiche_resto">
@@ -24,6 +24,30 @@ echo "Bonjour " . $_SESSION['prenom_user'];
         </form>
 
     </div>
+
+    <form method="post" action="index.php?controller=Note&action=Addnote&id=<?php echo $restaurantData['restaurant']['id_restaurant'] ?>">
+        <div id="star-container">
+
+            <span id="selected-rating">
+                <h5>Noter le restaurant? </h5>
+            </span>
+
+            <span class="star">★</span>
+
+            <span class="star">★</span>
+
+            <span class="star">★</span>
+
+            <span class="star">★</span>
+
+            <span class="star">★</span>
+            <input type="hidden" name="rating" id="rating" value="0">
+            <button id="validate-rating">
+                <p>Valider</p>
+            </button>
+        </div>
+    </form>
+
 
     <div id="fiche_resto" class="container-fluid">
 
