@@ -37,7 +37,7 @@ function adminUpdateResto() {
             console.log(itemUpdate);
 
             // Envoi d'une requête http à l'API pour update le resto
-            fetch(`http://application/Api_MVC/public/restaurant/update/${elt.id}`, itemUpdate)
+            fetch(`http://localhost:8888/Api_MVC/public/restaurant/update/${elt.id}`, itemUpdate)
                 .then((response) => response.json())
                 .then((json) => {
                     if (json.status) {
@@ -62,7 +62,7 @@ function adminDeleteResto() {
             if (confirm(`Voulez vraiment supprimer le resto ${document.getElementById('nom_restaurant' + elt.id).value} `)) {
 
                 // Envoi d'une requête http à l'API pour update le resto
-                fetch(`http://application/Api_MVC/public/restaurant/delete/${elt.id}`)
+                fetch(`http://localhost:8888/Api_MVC/public/restaurant/delete/${elt.id}`)
                     .then((response) => response.json())
                     .then((json) => {
                         if (json.status) {
@@ -118,7 +118,7 @@ btnRestoAValider.forEach(elt => {
         }
 
         // Envoi d'une requête http à l'API pour valider le resto
-        fetch(`http://application/Api_MVC/public/restaurant/update/${elt.id}`, item)
+        fetch(`http://localhost:8888/Api_MVC/public/restaurant/update/${elt.id}`, item)
             .then((response) => response.json())
             .then((json) => {
                 itemReplace = JSON.parse(item.body);
