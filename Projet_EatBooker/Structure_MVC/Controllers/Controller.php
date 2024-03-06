@@ -19,6 +19,7 @@ abstract class Controller
 
 
 
+
     protected function render(string $path, array $data = [])
     {
         extract($data);

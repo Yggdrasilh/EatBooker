@@ -44,7 +44,6 @@ class UserController extends Controller
 
 
                 header('location:' . $this->baseUrlSite . '');
-
             }
         }
         if ($valider)

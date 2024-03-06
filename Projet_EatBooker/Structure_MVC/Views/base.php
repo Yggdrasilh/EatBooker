@@ -179,7 +179,11 @@
 
     <!-- CONNEXION FICHIER SCRIPT.JS DANS DOSSIER JS -->
     <script src="js/scripts.js"></script>
+<<<<<<< HEAD
+    <script src="js/scriptFavori.js"></script>
+=======
     <script src="js/scriptNoteResto.js"></script>
+>>>>>>> a66085c98c0af9585b904750e147fed8b44dccf0
     <script src="js/scriptsAde.js"></script>
     <script src="js/scriptsGestionRestaurant.js"></script>
 
