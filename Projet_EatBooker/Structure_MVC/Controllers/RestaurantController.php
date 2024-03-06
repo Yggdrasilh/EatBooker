@@ -229,8 +229,8 @@ class RestaurantController extends Controller
             } else {
                 $this->render('restaurant/formPlanning', ['erreur' => true]);
             }
-
-
+        }
+    }
     public function find($id)
     {
         // recuperer l'id restaurant récupérer en GET
@@ -295,7 +295,6 @@ class RestaurantController extends Controller
             $responseData = json_decode($result, true);
             // Répondre à la requête AJAX avec un objet JSON indiquant si l'opération a réussi ou non
             echo json_encode(['success' => isset($responseData['success']) && $responseData['success'] === true]);
-
         }
     }
 }
