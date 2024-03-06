@@ -3,11 +3,11 @@
 $title = 'EatBooker - Accueil';
 
 if ($_SESSION == TRUE) {
-    echo "Bonjour " . $_SESSION['prenom_user']; ?>
-<?php }
+    echo "Bonjour " . $_SESSION['prenom_user'];
+}
 // var_dump($_SESSION); 
-?>
 
+?>
 <section id="section_accueil">
     <h1 id="titre_accueil">Bienvenue sur EatBooker</h1>
     <div>

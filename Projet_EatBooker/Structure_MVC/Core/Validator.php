@@ -13,7 +13,7 @@ class Validator
     {
         if (!empty($_POST)) {
             foreach ($_POST as $value) {
-                if (empty($value) || !isset($post[$value])) {
+                if (empty($value) || !isset($value)) {
                     return false;
                 }
             }
