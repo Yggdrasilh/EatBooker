@@ -19,7 +19,10 @@ class UserController extends Controller
         $valider = $_POST['valider'] ?? '';
 
         // Appeler l'API pour récupérer les informations utilisateur
+
+
         $apiUrl = $this->baseUrlApi . '/user';
+
         $apiData = file_get_contents($apiUrl);
         $userData = json_decode($apiData, true);
 
@@ -36,7 +39,9 @@ class UserController extends Controller
                 $_SESSION['role_user'] = $user['role_user'];
                 // var_dump($_SESSION);
                 //    Envoyer l'utilisateur connecté vers la page d'accueil.
+
                 header('location:' . $this->baseUrlSite . '');
+
             }
         }
         if ($valider)
@@ -259,6 +264,32 @@ class UserController extends Controller
 
         $this->render('user/formProfil');
     }
-}
 
-//                                  ********************
+
+    //                                  ********************
+    // Recuperation des users : 
+
+    public function getUserInfo($userId)
+    {
+        // URL de l'API pour récupérer les informations sur l'utilisateur
+        $apiUrl = $this->baseUrlApi . '/user/find/' . $userId;
+
+        // Envoi de la requête à l'API pour récupérer les informations sur l'utilisateur
+        $result = file_get_contents($apiUrl);
+
+        // Vérification du résultat de la requête
+        if ($result === FALSE) {
+            // Gestion des erreurs
+            return []; // Retourner une liste vide en cas d'erreur
+        } else {
+            // Traitement de la réponse de l'API
+            $responseData = json_decode($result, true);
+            if (isset($responseData['user'])) {
+                return $responseData['user'];
+                var_dump($responseData['user']);
+            } else {
+                return []; // Retourner une liste vide si aucune donnée d'utilisateur n'est trouvée
+            }
+        }
+    }
+}

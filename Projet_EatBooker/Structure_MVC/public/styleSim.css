@@ -62,3 +62,10 @@
 textBtnNav {
     text-decoration: none;
 }
+
+.comment {
+    border: solid #313131 0.03em;
+    margin: 1%;
+    padding: 1%;
+    width: 600px;
+}

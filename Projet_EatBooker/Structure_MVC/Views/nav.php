@@ -1,7 +1,8 @@
+
  <?php
 
-
     // Fonction pour générer la navigation en fonction du rôle de l'utilisateur
+
     function generateNavigation($role)
     {
         switch ($role) {
@@ -17,7 +18,7 @@
                 $nav_elements = array(
                     '<a class="nav" href="http://localhost:8888/Projet_EatBooker/Projet_EatBooker/Structure_MVC/public/"><button type="button" class="btn btn-light btnNav">Accueil</button></a>',
                     '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Gestion Restaurant</button></a>',
-                    '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Gestion des Utilisateurs</button></a>',
+                    '<a class="nav" href="index.php?controller=admin&action=findAll"><button type="button" class="btn btn-light btnNav">Gestion des Utilisateurs</button></a>',
                     '<a class="nav" href="#"><button type="button" class="btn btn-light btnNav">Modération des commentaires</button></a>',
                 );
                 break;
@@ -34,6 +35,10 @@
                 $nav_elements = array(); // Cas par défaut: aucune navigation
                 break;
         }
+
+
+
+
 
         // Générer la navigation
         foreach ($nav_elements as $nav_element) {

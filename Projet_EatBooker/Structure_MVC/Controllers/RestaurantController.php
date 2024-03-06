@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Controllers\CommentsController;
+
+
 class RestaurantController extends Controller
 {
 
@@ -29,9 +32,11 @@ class RestaurantController extends Controller
         $apiUrl = $this->baseUrlApi . '/Comments/find/' . $restoId;
         $apiData = file_get_contents($apiUrl);
         $commentsData = json_decode($apiData, true);
+        (new CommentsController())->FindByID($id);
+        // (new AdminController())->findAll();
 
 
-        $this->render('restaurant/find', ['restaurantData' => $restaurantData, 'commentsData' => $commentsData]);
+        $this->render('restaurant/find', ['restaurantData' => $restaurantData, 'commentsData' => (new CommentsController())->FindByID($id)]);
     }
 
     // Ajouter un restaurant aux favoris de l'utilisateur
