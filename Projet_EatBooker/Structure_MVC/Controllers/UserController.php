@@ -21,7 +21,9 @@ class UserController extends Controller
         // Appeler l'API pour récupérer les informations utilisateur
 
 
+
         $apiUrl = $this->baseUrlApi . '/user';
+
 
         $apiData = file_get_contents($apiUrl);
         $userData = json_decode($apiData, true);
@@ -39,6 +41,7 @@ class UserController extends Controller
                 $_SESSION['role_user'] = $user['role_user'];
                 // var_dump($_SESSION);
                 //    Envoyer l'utilisateur connecté vers la page d'accueil.
+
 
                 header('location:' . $this->baseUrlSite . '');
             }
