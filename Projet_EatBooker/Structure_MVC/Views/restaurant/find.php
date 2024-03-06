@@ -8,7 +8,6 @@ echo "Bonjour " . $_SESSION['prenom_user'];
 
 
 
-?>
 <section id="section_fiche_resto">
 
     <div class="container-fluid" id="fiche_resto">
@@ -42,7 +41,7 @@ echo "Bonjour " . $_SESSION['prenom_user'];
 
             </div>
             <p id="nom_fiche_resto" class="card-title"><?= $restaurantData['restaurant']['adresse_restaurant'] ?></p>
-            <h3 id="ville_fiche_resto" class="card-text"><?= $restaurantData['restaurant']['cp_restaurant'] ?><?= $restaurantData['restaurant']['ville_restaurant'] ?></h3>
+            <h3 id="ville_fiche_resto" class="card-text"><?= $restaurantData['restaurant']['cp_restaurant'] ?> <?= $restaurantData['restaurant']['ville_restaurant'] ?></h3>
             <p id="prix_fiche_resto" class="card-text">20-35€</p>
 
 

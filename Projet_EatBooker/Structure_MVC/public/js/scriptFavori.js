@@ -1,12 +1,14 @@
 const favoriButton = document.querySelector('#favori');
 const favoriCoeur = document.querySelector('#favori_coeur');
 
+
+
 // Écouter l'événement 'click' sur l'icône du cœur
 favoriButton.addEventListener('click', function (event) {
     event.preventDefault(); // Empêcher le comportement par défaut du formulaire
 
-    const restaurantId = favoriCoeur.dataset.restaurantId; // Récupérer l'ID du restaurant à partir de l'attribut de données
-    const userId = favoriCoeur.dataset.userId; // Récupérer l'ID de l'utilisateur associé à cette icône
+    const restaurantId = favoriCoeur.dataset.restaurantId;
+    const userId = favoriCoeur.dataset.userId;
 
     // Préparer les données à envoyer dans la requête AJAX
     const data = JSON.stringify({
@@ -14,8 +16,8 @@ favoriButton.addEventListener('click', function (event) {
         id_restaurant: restaurantId
     });
 
-    // Utiliser l'API Fetch pour envoyer la requête AJAX
-    fetch('http://applications/julie/projets_perso/Projet_EatBooker/EatBooker/Projet_EatBooker/Structure_MVC/public/index.php?controller=restaurant&action=addFavori', {
+    // Envoyer la requête AJAX ATTENTION MODIFIER LE LIEN
+    fetch('http://applications/julie/projets_perso/Projet_EatBooker/EatBooker/Projet_EatBooker/Structure_MVC/public/index.php?controller=favori&action=addFavori', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -23,22 +25,19 @@ favoriButton.addEventListener('click', function (event) {
         body: data
     })
         .then(response => {
-            if (response.ok) { // Vérifier si la réponse est valide
-                return response.json(); // Parser la réponse en objet JSON
+            if (response.ok) {
+                return response.json();
             } else {
-                throw new Error('Une erreur s\'est produite lors de l\'ajout du restaurant aux favoris.');
+                console.error("Erreur de la requête AJAX :", response);
+                throw new Error('La requête AJAX a échoué.');
             }
         })
-
-
         .then(data => {
 
-            favoriCoeur.classList.add('favoriValide'); // Basculer la classe CSS pour changer la couleur du cœur
 
-            console.log(favoriCoeur);
-
+            // Ajouter la classe CSS en fonction de l'état du favori
+            favoriCoeur.classList.add('favoriValide');
         })
-        .catch(error => {
-            console.log(error.message);
-        });
+        .catch(error => console.log(error.message));
 });
+
