@@ -11,12 +11,8 @@ use App\Models\CreationModel;
 abstract class Controller
 {
 
-
-    protected $baseUrlApi = "http://applications/julie/projets_perso/api_eatbooker_MVC/public";  // Base d'url pour l'API
-    protected $baseUrlSite = "http://applications/julie/projets_perso/Projet_EatBooker/EatBooker/Projet_EatBooker/Structure_MVC/public"; //base d'url pour le Site
-
-
-
+    protected $baseUrlApi = "http://localhost:8888/Projet_EatBooker/Projet_EatBooker/Api_MVC/public";  // Base d'url pour l'API
+    protected $baseUrlSite = "http://localhost:8888/Projet_EatBooker_appli/Projet_EatBooker/Structure_MVC/public"; //base d'url pour le Site
 
     protected function render(string $path, array $data = [])
     {

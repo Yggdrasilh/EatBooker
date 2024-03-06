@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 class HomeController extends Controller
 {
+    // findAll des restaurants
     public function index()
     {
         // Appeler l'API pour récupérer les informations restaurant

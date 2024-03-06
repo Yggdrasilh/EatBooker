@@ -121,7 +121,7 @@
                 <!-- colonne gauche footer - ATTENTION MODIFIER LES LIENS -->
                 <ul id="colonne_gauche_footer" class="colonne_footer">
                     <li class="menu_footer">
-                        <a href="#" class="lien_menu_footer">Page Contact</a>
+                        <a href="index.php?controller=user&action=contact" class="lien_menu_footer">Page Contact</a>
                     </li>
                     <li class="menu_footer">
                         <a href="#" class="lien_menu_footer">Plan du site</a>

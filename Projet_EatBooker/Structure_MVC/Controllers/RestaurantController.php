@@ -59,4 +59,10 @@ class RestaurantController extends Controller
         $result = file_get_contents($apiUrl, true, $context);
         $convert = json_decode($result, true);
     }
+
+    public function findRestaurant()
+    {
+        // renvoie sur la view restaurant/findRestaurant
+        $this->render('restaurant/findRestaurant');
+    }
 }

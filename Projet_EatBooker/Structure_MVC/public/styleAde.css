@@ -66,3 +66,63 @@ button {
     color: white;
     border-color: #313131;
 }
+
+/* page contact */
+
+input {
+    background-color: white;
+    border: 1px solid gray;
+    width: 80%;
+    margin-bottom: 2em;
+    color: gray;
+    height: 2em;
+    font-size: small;
+}
+
+textarea {
+    width: 80%;
+    font-size: small;
+    color: gray;
+    border: 1px solid gray;
+    background-color: white;
+}
+
+
+
+.boutons input {
+    border-style: none;
+    text-transform: uppercase;
+    text-decoration: underline;
+
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.adresse {
+    margin-bottom: 1em;
+}
+
+.emplacement {
+    margin-right: 2em;
+}
+
+form {
+    margin-top: 3em;
+}
+
+/* page trouver un restaurant */
+
+.formulaire_v {
+    display: flex;
+    margin-top: 1em;
+
+}
+
+h1 {
+    margin-top: 0.5em;
+}

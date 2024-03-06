@@ -7,7 +7,7 @@ if ($_SESSION == TRUE) {
 <?php }
 // var_dump($_SESSION); 
 ?>
->>>>>>> 0bb3ffbbfd63e1f4305b6a85f12ed594e2ecf833
+
 <section id="section_accueil">
     <h1 id="titre_accueil">Bienvenue sur EatBooker</h1>
     <div>
