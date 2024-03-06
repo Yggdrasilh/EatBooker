@@ -1,0 +1,68 @@
+/* tableau de la liste des utilisateurs pour le profil admin */
+
+.tableau {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #E9FFE0;
+    color: #313131;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ligne1 {
+    background-color: #313131;
+    color: white;
+
+}
+
+.container {
+    margin: 0 auto;
+    /* Centre le tableau horizontalement */
+    width: 80%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+th,
+td {
+
+    /* Ajoute des bordures à toutes les cellules */
+    padding: 8px;
+    /* Espace intérieur des cellules */
+    text-align: center;
+    /* Centre le texte dans les cellules */
+}
+
+td {
+    border-bottom: 1px solid #000;
+    /* Ajoute une bordure en bas de chaque cellule */
+
+}
+
+a.button {
+    background-color: #313131;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: white;
+}
+
+a.button:hover {
+    background-color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #313131;
+}
+
+/* page qui s'affiche pour supprimer un utilisateur */
+
+button {
+    background-color: #313131;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    color: white;
+    border-color: #313131;
+}

@@ -11,17 +11,28 @@
 
     <!-- lien feuille de style -->
 
+
     <!-- <link rel="stylesheet" href="style.css">  -->
+
     <link rel="stylesheet" href="styleJu.css">
     <link rel="stylesheet" href="styleSim.css">
+
     <link rel="stylesheet" href="styleNono.css">
 
+    <link rel="stylesheet" href="styleAde.css">
 
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.google.com/specimen/Libre+Baskerville?query=libre" rel="stylesheet">
 
 
 
     <!--  liens font awesome et google fonts -->
-    <script src="https://kit.fontawesome.com/cff33ecd93.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2a089d2673.js" crossorigin="anonymous"></script>
     <script src="https://fonts.google.com/specimen/Libre+Baskerville?query=libre"></script>
 </head>
 
@@ -35,24 +46,40 @@
             <div id="header_logo_connexion">
 
 
-                <!-- logo ATTENTION MODIFIER LE LIEN ajout lien vers accueil-->
-                <a href="#"><img src="../public/images/logoSansFond.png" alt="logo eat booker" id="logo_header"></a>
+                <!-- logo -->
+                <a href="index.php"><img src="../public/images/logoSansFond.png" alt="logo eat booker" id="logo_header"></a>
 
                 <div id="header_connexion">
 
                     <!--bouton connexion restaurateur ATTENTION CHANGER LE LIEN mettre lien vers formulaire de connexion restaurant-->
                     <a href="#" id="connexion_restaurant">
                         <button type="button" class="btn btn-light" id="connexion_restaurant">
-                            <p class="text_button">J'ai un restaurant</p>
+                            <p class="text_button">Inscrire Mon Restaurant</p>
                         </button>
                     </a>
 
 
                     <!--bouton inscription/connexion user et admin ATTENTION CHANGER LE LIEN mettre lien vers formulaire de connexion -->
-                    <a href="index.php?controller=User&action=login" id="connexion_user">
-                        <button type="button" class="btn btn-light" id="connexion_user">
-                            <p class="text_button">Connexion/Inscription</p>
-                        </button>
+                    <?php
+                    if (empty($_SESSION['id_user'])) {
+                    ?>
+                        <a href="index.php?controller=User&action=login" id="connexion_user">
+                            <button type="button" class="btn btn-light" id="connexion_user">
+                                <p class="text_button">Connexion/Inscription</p>
+                            </button>
+                        </a>
+                    <?php
+                    } else {
+                    ?>
+                        <a href="index.php?controller=User&action=logout" id="deconnexion_user">
+                            <button type="button" class="btn btn-light" id="connexion_user">
+                                <p class="text_button">Deconnexion</p>
+                            </button>
+                        </a>
+                    <?php
+                    }
+                    ?>
+
                     </a>
                 </div>
 
@@ -93,44 +120,47 @@
 
 
         <!---------- STRUCTURE FOOTER --------------------- -->
-        <footer id="footer">
+        <footer>
+            <div id="footer">
+                <!-- colonne gauche footer - ATTENTION MODIFIER LES LIENS -->
+                <ul id="colonne_gauche_footer" class="colonne_footer">
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Page Contact</a>
+                    </li>
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Plan du site</a>
+                    </li>
 
-            <!-- colonne gauche footer - ATTENTION MODIFIER LES LIENS -->
-            <ul id="colonne_gauche_footer" class="colonne_footer">
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Page Contact</a>
-                </li>
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Plan du site</a>
-                </li>
+                </ul>
 
-            </ul>
+                <!-- colonne milieu footer - ATTENTION MODIFIER LES LIENS - reprendre lien bouton header -->
+                <ul id="colonne_milieu_footer" class="colonne_footer">
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Inscrire Mon Restaurant</a>
+                    </li>
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Vous souhaitez réserver</a>
+                    </li>
 
-            <!-- colonne milieu footer - ATTENTION MODIFIER LES LIENS - reprendre lien bouton header -->
-            <ul id="colonne_milieu_footer" class="colonne_footer">
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Vous êtes Restaurateur/Restauratrice</a>
-                </li>
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Vous souhaitez réserver</a>
-                </li>
+                </ul>
 
-            </ul>
+                <!-- colonne droite footer - ATTENTION MODIFIER LES LIENS -->
+                <ul id="colonne_droite_footer" class="colonne_footer">
 
-            <!-- colonne droite footer - ATTENTION MODIFIER LES LIENS -->
-            <ul id="colonne_droite_footer" class="colonne_footer">
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Mentions Légales</a>
+                    </li>
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Politique de Confidentialité</a>
+                    </li>
 
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Mentions Légales</a>
-                </li>
-                <li class="menu_footer">
-                    <a href="#" class="lien_menu_footer">Politique de Confidentialité</a>
-                </li>
 
-                <li class="menu_footer">
-                    EatBooker Copyright 2024
-                </li>
-            </ul>
+                </ul>
+
+            </div>
+            <p class="menu_footer" id="copy">
+                EatBooker Copyright 2024
+            </p>
 
         </footer>
 
@@ -149,6 +179,9 @@
 
     <!-- CONNEXION FICHIER SCRIPT.JS DANS DOSSIER JS -->
     <script src="js/scripts.js"></script>
+    <script src="js/scriptNoteResto.js"></script>
+    <script src="js/scriptsAde.js"></script>
+
 
     <!-- CONNEXION js bootstrap -->
 
