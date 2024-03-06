@@ -41,7 +41,6 @@ class UserController extends Controller
                 //    Envoyer l'utilisateur connecté vers la page d'accueil.
 
                 header('location:' . $this->baseUrlSite . '');
-
             }
         }
         if ($valider)
@@ -134,7 +133,7 @@ class UserController extends Controller
 
 
 
-        // $this->render('user/profil');
+        $this->render('user/profil');
     }
 
 

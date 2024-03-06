@@ -37,6 +37,7 @@ class RestaurantController extends Controller
 
 
         $this->render('restaurant/find', ['restaurantData' => $restaurantData, 'commentsData' => (new CommentsController())->FindByID($id)]);
+        return $restaurantData;
     }
 
     // Ajouter un restaurant aux favoris de l'utilisateur
