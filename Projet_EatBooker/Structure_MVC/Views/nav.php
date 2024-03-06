@@ -1,3 +1,4 @@
+
 <?php
 // Fonction pour générer la navigation en fonction du rôle de l'utilisateur
 
@@ -35,8 +36,15 @@ function generateNavigation($role)
             break;
     }
 
-    // Générer la navigation
-    foreach ($nav_elements as $nav_element) {
-        echo $nav_element;
+
+
+
+
+
+
+
+        // Générer la navigation
+        foreach ($nav_elements as $nav_element) {
+            echo $nav_element;
+        }
     }
-}
