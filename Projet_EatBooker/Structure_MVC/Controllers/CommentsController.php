@@ -63,6 +63,8 @@ class CommentsController extends Controller
         } else {
             // Traitement de la réponse de l'API
             $responseData = json_decode($result, true);
+
+            header('location:' . $this->baseUrlSite . '/index.php?controller=restaurant&action=find&id=' . $restoId);
             echo "Le commentaire a bien été ajouté";
             if (isset($responseData['success']) && $responseData['success'] === true) {
                 echo "Le commentaire a été ajouté avec succès.";

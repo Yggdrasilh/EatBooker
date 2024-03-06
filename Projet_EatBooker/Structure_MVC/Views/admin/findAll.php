@@ -27,9 +27,9 @@ $title = "Liste des utilisateurs";
                 <td class="uno"><input type="text" value="<?php echo $user['email_user']; ?>" id="email_user_<?php echo $user['id_user']; ?>"></td>
                 <td class="deux"><input type="text" value="<?php echo $user['role_user']; ?>" id="role_user_<?php echo $user['id_user']; ?>"></td>
                 <td>
-                    <button id="updatebutton" class="button" data-user-id="<?php echo $user['id_user']; ?>">Modifier </button>
+                    <button type="button" id="updatebutton" class="update-button" data-user-id="<?php echo $user['id_user']; ?>">Modifier </button>
                 </td>
-                <td> <a href=" index.php?controller=admin&action=supprimer&id_user=<?php echo $user['id_user']; ?> " class=" button">Supprimer</a>
+                <td> <a href="index.php?controller=admin&action=supprimer&id=<?php echo $user['id_user']; ?>" class=" button">Supprimer</a>
                 </td>
             </tr>
         <?php

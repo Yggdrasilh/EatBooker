@@ -62,8 +62,6 @@ class FavoriController extends Controller
     public function findFavoris()
     {
 
-
-
         // URL de l'API pour récupérer tous les favoris lié à l'user
         $apiUrl = $this->baseUrlApi . '/favori';
         // var_dump($apiUrl);
