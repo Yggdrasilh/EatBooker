@@ -5,46 +5,192 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
+    <!-- lien bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/cff33ecd93.js" crossorigin="anonymous"></script>
+
+    <!-- lien feuille de style -->
+
+
+    <!-- <link rel="stylesheet" href="style.css">  -->
+
+    <link rel="stylesheet" href="styleJu.css">
+    <link rel="stylesheet" href="styleSim.css">
+
+    <link rel="stylesheet" href="styleNono.css">
+
+    <link rel="stylesheet" href="styleAde.css">
+
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.google.com/specimen/Libre+Baskerville?query=libre" rel="stylesheet">
+
+
+
+    <!--  liens font awesome et google fonts -->
+    <script src="https://kit.fontawesome.com/2a089d2673.js" crossorigin="anonymous"></script>
+    <script src="https://fonts.google.com/specimen/Libre+Baskerville?query=libre"></script>
 </head>
 
 <body>
-    <div id="wrapper" style="margin: 0 auto; width:95%;">
-        <header class="row">
-            <h1 class="text-center cols-12">Mon Portfolio</h1>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary cols-12">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Mon portfolio</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/home">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.php?controller=Creation&action=index">Mes création</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.php?controller=User&action=monCompte">Mon compte</a>
-                            </li>
-                        </ul>
-                    </div>
+    <div id="wrapper">
+
+        <!---------- STRUCTURE HEADER --------------------- -->
+        <header id="header_sans_nav" class="row">
+
+
+            <div id="header_logo_connexion">
+
+
+                <!-- logo -->
+                <a href="index.php"><img src="../public/images/logoSansFond.png" alt="logo eat booker" id="logo_header"></a>
+
+                <div id="header_connexion">
+
+                    <!--bouton connexion restaurateur ATTENTION CHANGER LE LIEN mettre lien vers formulaire de connexion restaurant-->
+                    <a href="#" id="connexion_restaurant">
+                        <button type="button" class="btn btn-light" id="connexion_restaurant">
+                            <p class="text_button">Inscrire Mon Restaurant</p>
+                        </button>
+                    </a>
+
+
+                    <!--bouton inscription/connexion user et admin ATTENTION CHANGER LE LIEN mettre lien vers formulaire de connexion -->
+                    <?php
+                    if (empty($_SESSION['id_user'])) {
+                    ?>
+                        <a href="index.php?controller=User&action=login" id="connexion_user">
+                            <button type="button" class="btn btn-light" id="connexion_user">
+                                <p class="text_button">Connexion/Inscription</p>
+                            </button>
+                        </a>
+                    <?php
+                    } else {
+                    ?>
+                        <a href="index.php?controller=User&action=logout" id="deconnexion_user">
+                            <button type="button" class="btn btn-light" id="connexion_user">
+                                <p class="text_button">Deconnexion</p>
+                            </button>
+                        </a>
+                    <?php
+                    }
+                    ?>
+
+                    </a>
                 </div>
-            </nav>
+
+            </div>
+
+
+
         </header>
+        <!-- ------------FIN HEADER---------------------- -->
+
+
+
+        <!-- NAVIGATION CONDITIONNEE EN FONCTION DU ROLE - VOIR nav.php pour la structure -->
+        <nav id='navigation'>
+
+            <?php
+            // Si Role user == BDD on fait la fonction generateNavigation par rapport au Role_user
+            if (isset($_SESSION['role_user'])) {
+                generateNavigation($_SESSION['role_user']);
+            }
+            // var_dump($_SESSION);
+            ?>
+        </nav>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="menu-icon">
+            <path fill="#313131" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+        </svg>
+
+
+        <!-- ---------------------------------FIN NAVIGATION--------------------------------------------------------- -->
+
+
+
         <main>
             <?= $content ?>
         </main>
+
+
+
+
+        <!---------- STRUCTURE FOOTER --------------------- -->
         <footer>
-            <p class="text-center">Mon portfolio Copyright 2023</p>
+            <div id="footer">
+                <!-- colonne gauche footer - ATTENTION MODIFIER LES LIENS -->
+                <ul id="colonne_gauche_footer" class="colonne_footer">
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Page Contact</a>
+                    </li>
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Plan du site</a>
+                    </li>
+
+                </ul>
+
+                <!-- colonne milieu footer - ATTENTION MODIFIER LES LIENS - reprendre lien bouton header -->
+                <ul id="colonne_milieu_footer" class="colonne_footer">
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Inscrire Mon Restaurant</a>
+                    </li>
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Vous souhaitez réserver</a>
+                    </li>
+
+                </ul>
+
+                <!-- colonne droite footer - ATTENTION MODIFIER LES LIENS -->
+                <ul id="colonne_droite_footer" class="colonne_footer">
+
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Mentions Légales</a>
+                    </li>
+                    <li class="menu_footer">
+                        <a href="#" class="lien_menu_footer">Politique de Confidentialité</a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+            <p class="menu_footer" id="copy">
+                EatBooker Copyright 2024
+            </p>
+
         </footer>
+
+
+        <!---------- FIN FOOTER --------------------- -->
+
+
+
+
+
+
+
     </div>
+    <!-- ----- FIN DE WRAPPER------------ -->
+
+
+    <!-- CONNEXION FICHIER SCRIPT.JS DANS DOSSIER JS -->
+    <script src="js/scripts.js"></script>
+
+    <script src="js/scriptFavori.js"></script>
+
+    <script src="js/scriptNoteResto.js"></script>
+
+    <script src="js/scriptsAde.js"></script>
+    <script src="js/scriptsGestionRestaurant.js"></script>
+
+    <!-- CONNEXION js bootstrap -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+
 
 </html>

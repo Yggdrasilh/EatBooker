@@ -1,0 +1,577 @@
+/* *************GOOGLE FONT DU PROJET *************** */
+/* .libre-baskerville-regular {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .libre-baskerville-bold {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .libre-baskerville-regular-italic {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+   */
+
+
+
+/***************************** Starter Pack *****************************/
+img {
+    max-width: 100%;
+    height: auto;
+    width: 150px;
+}
+
+#wrapper {
+    margin: 0 auto;
+    font-family: "Libre Baskerville", serif;
+    width: 95%;
+
+}
+
+body {
+
+    background-color: #E9FFE0;
+    width: 95%;
+}
+
+
+/* Navigation */
+
+#navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.menu-icon {
+    display: none;
+    width: 30px;
+    height: 30px;
+    /* Masquer le menu burger par défaut */
+}
+
+#navigation.show {
+    display: block;
+}
+
+
+@media screen and (max-width: 480px) {
+
+
+    #navigation {
+        display: none;
+    }
+
+    /* Afficher le menu burger */
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+
+    .menu-icon .bar {
+        display: block;
+        width: 1.563em;
+        height: 0.188em;
+        background-color: #333;
+        margin: 0.313em auto;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+
+
+    #navigation {
+        display: none;
+    }
+
+    /* Afficher le menu burger */
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+
+    .menu-icon .bar {
+        display: block;
+        width: 1.563em;
+        height: 0.188em;
+        background-color: #333;
+        margin: 0.313em auto;
+    }
+}
+
+body {
+    background-color: #E9FFE0;
+}
+
+.text_button {
+    margin-bottom: 0;
+    font-family: "Libre Baskerville", serif;
+}
+
+p {
+    font-family: "Libre Baskerville", serif;
+}
+
+/*********************************CSS HEADER **********************************/
+#header_sans_nav {
+    background-color: #313131;
+    box-shadow: #313131 -2px 2px 6px;
+}
+
+#header_logo_connexion {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#header_connexion {
+    display: grid;
+    align-content: space-evenly;
+    place-items: center;
+    gap: 5%;
+
+    margin-right: 2%;
+}
+
+#logo_header {
+    width: 40%;
+}
+
+#connexion_restaurant,
+#connexion_user {
+    width: 12rem;
+}
+
+/* ******** @media query for mobile viewport HEADER ********* */
+@media screen and (max-width:480px) {
+
+    #header_connexion {
+        grid-auto-flow: row;
+        /* pour que les éléments soient disposés en ligne */
+        gap: 5px;
+        /* réduire l'espace entre les éléments */
+    }
+
+    #connexion_restaurant {
+        margin-top: 0.2em;
+    }
+
+    #connexion_user {
+        margin-bottom: 0.2em;
+    }
+
+    #logo_header {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:600px) {
+
+    #header_connexion {
+        grid-auto-flow: row;
+        /* pour que les éléments soient disposés en ligne */
+        gap: 5px;
+        /* réduire l'espace entre les éléments */
+    }
+
+    #connexion_restaurant {
+        margin-top: 0.2em;
+    }
+
+    #connexion_user {
+        margin-bottom: 0.2em;
+    }
+
+    #logo_header {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+
+    #navigation {
+        display: none;
+    }
+
+    /* Afficher le menu burger */
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+
+    .menu-icon .bar {
+        display: block;
+        width: 1.563em;
+        height: 0.188em;
+        background-color: #333;
+        margin: 0.313em auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+
+    #navigation {
+        display: none;
+    }
+
+    /* Afficher le menu burger */
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+
+    .menu-icon .bar {
+        display: block;
+        width: 1.563em;
+        height: 0.188em;
+        background-color: #333;
+        margin: 0.313em auto;
+    }
+}
+
+/*********************************CSS FOOTER **********************************/
+footer {
+    background-color: #313131;
+}
+
+#footer {
+
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    width: 100%;
+    box-shadow: #313131 -2px 2px 6px;
+}
+
+.colonne_footer {
+    padding-left: 0;
+}
+
+.menu_footer {
+    list-style-type: none;
+    color: white;
+    text-decoration: none;
+
+
+}
+
+
+.lien_menu_footer {
+    text-decoration: none;
+    color: white;
+}
+
+.lien_menu_footer:hover {
+    text-decoration: none;
+    color: #E9FFE0;
+}
+
+#copy {
+    text-align: center;
+    font-style: italic;
+}
+
+/* ******** @media query for mobile viewport FOOTER ********* */
+@media screen and (max-width:480px) {
+
+
+
+    #footer {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    #footer ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    #footer li {
+        display: block;
+        margin: 0 0 10px;
+    }
+
+    .colonne_footer {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:600px) {
+
+
+
+    #footer {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    #footer ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    #footer li {
+        display: block;
+        margin: 0 0 10px;
+    }
+
+    .colonne_footer {
+        width: 50%;
+    }
+}
+
+/* **********CSS PAGE ACCUEIL******************* */
+#section_accueil {
+    width: 80%;
+    margin: 0 auto;
+
+}
+
+#titre_accueil {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+
+}
+
+/* PAGE ACCUEIL - presentation eatbooker */
+
+
+#presentation_accueil {
+    box-sizing: border-box;
+
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 4rem;
+
+}
+
+
+#txt_presentation {
+    float: inline-end;
+    font-size: larger;
+
+
+}
+
+#description_lien_connexion {
+    text-decoration: none;
+    color: #313131;
+    font-size: large;
+    font-weight: bold;
+}
+
+#description_lien_connexion:hover {
+    text-decoration: none;
+    color: #E9FFE0;
+    background-color: #313131;
+    font-weight: bold;
+}
+
+#imageAccueil {
+    border-radius: 50%;
+    height: auto;
+    border: 1px solid #313131;
+    float: inline-end;
+    box-shadow: #313131 -2px 2px 6px;
+
+}
+
+/* PAGE ACCUEIL - resto recommandés */
+#resto_mieux_notes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#tous_les_restos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#tous_restos {
+
+    color: white;
+}
+
+#tous_restos {
+    background-color: #313131;
+    border: #313131;
+    border-radius: 3%;
+    margin-top: 2rem;
+    box-shadow: #313131 2px 4px 8px;
+
+}
+
+#type_tous_restos {
+    display: flex;
+    justify-content: space-between;
+}
+
+#btn_reserver {
+    background-color: white;
+    color: #313131;
+    border: white;
+}
+
+
+/* ***********FICHE RESTAURANT  restaurant/find et comments/find************** */
+#fiche_resto {
+    display: flex;
+    align-items: center;
+}
+
+#titre_fiche_resto {
+    margin-top: 0.8em;
+    margin-bottom: 1em;
+    margin-left: 0.5em;
+}
+
+#favori {
+    border: none !important;
+    margin-left: 0.3em;
+    background-color: rgba(255, 255, 255, 0);
+
+}
+
+.fa-solid {
+    color: rgba(7, 7, 7, 0.461);
+
+}
+
+.favoriValide {
+    color: #63E6BE !important;
+
+
+
+}
+
+
+#fiche_resto {
+    display: flex !important;
+}
+
+#img_fiche {
+    width: 30%;
+    margin-right: 2em !important;
+}
+
+#img_fiche_resto {
+    width: 50em !important;
+    height: auto;
+    margin-right: 2em !important;
+
+}
+
+#description_resto {
+    width: 30%;
+    margin-left: 2em !important;
+}
+
+#info_fiche_resto {
+    width: 30%;
+    margin-left: 2em !important;
+    justify-content: center;
+}
+
+#comment_restaurant {
+    margin-top: 0.8em;
+}
+
+@media screen and (max-width:480px) {
+
+    #fiche_resto {
+        display: block !important;
+        width: 90% !important;
+        justify-content: center;
+    }
+
+    #img_fiche {
+        width: 90%;
+
+    }
+
+
+    #description_resto {
+        width: 90%;
+
+    }
+
+    #info_fiche_resto {
+        width: 90%;
+
+    }
+
+    #titre_fiche_resto {
+        text-align: center;
+        margin-left: 0;
+    }
+
+
+}
+
+@media screen and (max-width:600px) {
+
+    #fiche_resto {
+        display: block !important;
+        width: 90% !important;
+        justify-content: center;
+    }
+
+    #img_fiche {
+        width: 90%;
+
+    }
+
+
+    #description_resto {
+        width: 90%;
+
+    }
+
+    #info_fiche_resto {
+        width: 90%;
+
+    }
+
+    #titre_fiche_resto {
+        text-align: center;
+        margin-left: 0;
+    }
+
+
+}

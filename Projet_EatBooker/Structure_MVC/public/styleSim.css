@@ -1,0 +1,112 @@
+/* Navigation */
+#wrapper {
+    width: 1480px;
+}
+
+#navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#menu-icon {
+    display: none;
+    width: 30px;
+    height: 30px;
+    /* Masquer le menu burger par défaut */
+}
+
+.btnNav {
+    width: 20em !important;
+}
+
+.profilcard {
+    margin: 2%;
+}
+
+#commFindAll {
+    margin: 2%;
+    border: solid #313131 0.2em;
+    width: 900px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 480px) {
+    #wrapper {
+        width: 480px;
+    }
+
+    #navigation {
+        display: none;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Afficher le menu burger */
+    #menu-icon {
+        display: block;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.btnNav {
+    width: 100%;
+    background-color: #313131 !important;
+    text-decoration: none !important;
+    color: white;
+}
+
+.btnNav:hover {
+    background-color: white !important;
+
+}
+
+textBtnNav {
+    text-decoration: none;
+}
+
+.comment {
+    border: solid #313131 0.03em;
+    margin: 1%;
+    padding: 1%;
+    width: 600px;
+}
+
+
+/* Notation des restaurants  */
+#star-container {
+    font-size: 2rem;
+    user-select: none;
+    width: 700px;
+    display: flex;
+    align-items: center;
+
+}
+
+#star-container span {
+    margin-left: 1rem;
+}
+
+.star {
+    color: #ccc;
+    transition: color 0.2s;
+}
+
+.star:hover,
+.star.active {
+    color: #ffcc00;
+}
+
+#validate-rating {
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+
+}
