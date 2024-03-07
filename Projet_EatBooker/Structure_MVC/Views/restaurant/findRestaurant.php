@@ -14,7 +14,7 @@ $restaurantData = json_decode($apiData, true);
 
 <form action="index.php?controller=restaurant&action=findRestaurant" method="POST" class="formulaire_v">
 
-    <label for="ville">Sélectionner une ville:</label>
+    <label for="ville">Sélectionnez votre ville :</label>
 
     <select name="ville" id="ville">
         <option value="">Choisissez une option</option>
@@ -49,27 +49,6 @@ $restaurantData = json_decode($apiData, true);
     </div>
 
 </form>
-
-<?php
-
-foreach ($restaurantData['restaurant'] as $restaurant) {
-    if ($restaurant['ville_restaurant'] == $_POST["ville"]) {
-?>
-        <div id="tous_restos" class="card card-container" style="width: 13rem;">
-            <img src="images/imageAccueil.png" class="card-img-top" alt="image du restaurant">
-            <div class="card-body">
-                <h5 class="card-title"><?= $restaurant['type_restaurant'] ?> </h5>
-                <p class="card-text"><?= $restaurant['note_moyenne_restaurant'] ?>/5</p>
-                <h3 class="card-title"><?= $restaurant['nom_restaurant'] ?></h3>
-                <p class="card-text"><?= $restaurant['ville_restaurant'] ?></p>
-                <p class="card-text">20-35€</p>
-                <a href="index.php?controller=restaurant&action=find&id=<?= $restaurant['id_restaurant'] ?>" class="btn btn-primary btn-reserver" id="btn_reserver">Réserver</a>
-            </div>
-        </div>
-<?php
-    }
-}
-?>
 
 
 <!-- formulaire pour choisir un type de restaurant -->
@@ -111,23 +90,54 @@ foreach ($restaurantData['restaurant'] as $restaurant) {
 
 </form>
 
-<?php
 
-foreach ($restaurantData['restaurant'] as $restaurant) {
-    if ($restaurant['type_restaurant'] == $_POST["type"]) {
-?>
-        <div id="tous_restos" class="card card-container" style="width: 13rem;">
-            <img src="images/imageAccueil.png" class="card-img-top" alt="image du restaurant">
-            <div class="card-body">
-                <h5 class="card-title"><?= $restaurant['type_restaurant'] ?> </h5>
-                <p class="card-text"><?= $restaurant['note_moyenne_restaurant'] ?>/5</p>
-                <h3 class="card-title"><?= $restaurant['nom_restaurant'] ?></h3>
-                <p class="card-text"><?= $restaurant['ville_restaurant'] ?></p>
-                <p class="card-text">20-35€</p>
-                <a href="index.php?controller=restaurant&action=find&id=<?= $restaurant['id_restaurant'] ?>" class="btn btn-primary btn-reserver" id="btn_reserver">Réserver</a>
+
+<div class="les_restos" id="resto_mieux">
+
+    <?php
+    foreach ($restaurantData['restaurant'] as $restaurant) {
+        if ($restaurant['ville_restaurant'] == $_POST["ville"]) {
+    ?>
+
+            <div id="tous_restos" class="card card-container" style="width: 13rem;">
+                <img src="images/imageAccueil.png" class="card-img-top" alt="image du restaurant">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $restaurant['type_restaurant'] ?> </h5>
+                    <p class="card-text"><?= $restaurant['note_moyenne_restaurant'] ?>/5</p>
+                    <h3 class="card-title"><?= $restaurant['nom_restaurant'] ?></h3>
+                    <p class="card-text"><?= $restaurant['ville_restaurant'] ?></p>
+                    <p class="card-text">20-35€</p>
+                    <a href="index.php?controller=restaurant&action=find&id=<?= $restaurant['id_restaurant'] ?>" class="btn btn-primary btn-reserver" id="btn_reserver">Réserver</a>
+                </div>
             </div>
-        </div>
-<?php
+
+    <?php
+        }
     }
-}
-?>
+    ?>
+</div>
+
+
+<div id="resto_mieux">
+    <?php
+    foreach ($restaurantData['restaurant'] as $restaurant) {
+        if ($restaurant['type_restaurant'] == $_POST["type"]) {
+    ?>
+
+            <div id="tous_restos" class="card card-container" style="width: 13rem;">
+                <img src="images/imageAccueil.png" class="card-img-top" alt="image du restaurant">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $restaurant['type_restaurant'] ?> </h5>
+                    <p class="card-text"><?= $restaurant['note_moyenne_restaurant'] ?>/5</p>
+                    <h3 class="card-title"><?= $restaurant['nom_restaurant'] ?></h3>
+                    <p class="card-text"><?= $restaurant['ville_restaurant'] ?></p>
+                    <p class="card-text">20-35€</p>
+                    <a href="index.php?controller=restaurant&action=find&id=<?= $restaurant['id_restaurant'] ?>" class="btn btn-primary btn-reserver" id="btn_reserver">Réserver</a>
+                </div>
+            </div>
+
+    <?php
+        }
+    }
+    ?>
+</div>

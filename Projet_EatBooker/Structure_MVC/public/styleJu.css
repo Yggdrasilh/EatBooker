@@ -28,9 +28,10 @@ img {
 }
 
 #wrapper {
-    margin: 0 auto;
+
     font-family: "Libre Baskerville", serif;
-    width: 95%;
+    width: 90%;
+    margin: 0 auto;
 
 }
 
@@ -252,7 +253,6 @@ footer {
     justify-content: space-evenly;
     margin-top: 0.5rem;
     padding-top: 0.5rem;
-    width: 100%;
     box-shadow: #313131 -2px 2px 6px;
 }
 
@@ -264,7 +264,6 @@ footer {
     list-style-type: none;
     color: white;
     text-decoration: none;
-
 
 }
 
@@ -286,7 +285,6 @@ footer {
 
 /* ******** @media query for mobile viewport FOOTER ********* */
 @media screen and (max-width:480px) {
-
 
 
     #footer {

@@ -115,6 +115,18 @@ form {
     margin-top: 3em;
 }
 
+@media screen and (max-width:480px) {
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+    }
+
+    iframe {
+        width: 80%
+    }
+}
+
 /* page trouver un restaurant */
 
 .formulaire_v {
@@ -125,4 +137,47 @@ form {
 
 h1 {
     margin-top: 0.5em;
+}
+
+.libre-baskerville-regular {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+select#ville {
+    margin-right: 1em;
+    border: 1px solid #313131;
+    border-radius: 5px;
+}
+
+
+button,
+select#type {
+    margin-right: 1em;
+    border: 1px solid #313131;
+    border-radius: 5px;
+}
+
+
+label {
+    margin-right: 1em;
+    margin-top: 0.5em;
+}
+
+main {
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+
+
+#resto_mieux {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+#tous_restos {
+    margin-right: 2em;
 }
