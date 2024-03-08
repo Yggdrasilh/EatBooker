@@ -1,0 +1,17 @@
+/******************************* Gestion de Resto pour les admin *******************************/
+#tableauRestoValid {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+
+/************************************** Form inscription resto *******************************************/
+#inscriptionRestaurant {
+    max-width: 100%;
+    /* display: flex; */
+}
+
+.submitFormResto {
+    display: flex !important;
+    justify-content: end;
+}

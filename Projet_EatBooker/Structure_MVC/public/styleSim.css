@@ -25,6 +25,15 @@
     margin: 2%;
 }
 
+#commFindAll {
+    margin: 2%;
+    border: solid #313131 0.2em;
+    width: 900px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 @media screen and (max-width: 480px) {
     #wrapper {
         width: 480px;
@@ -61,4 +70,119 @@
 
 textBtnNav {
     text-decoration: none;
+}
+
+.comment {
+    border: solid #313131 0.03em;
+    margin: 1%;
+    padding: 1%;
+    width: 600px;
+}
+
+
+/* Notation des restaurants  */
+#star-container {
+    font-size: 2rem;
+    user-select: none;
+    width: 700px;
+    display: flex;
+    align-items: center;
+
+}
+
+#star-container span {
+    margin-left: 1rem;
+}
+
+.star {
+    color: #ccc;
+    transition: color 0.2s;
+}
+
+.star:hover,
+.star.active {
+    color: #ffcc00;
+}
+
+#validate-rating {
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+
+}
+
+#FormulaireSignIn {
+    display: flex;
+    width: 100%;
+
+
+}
+
+#formUserr {
+    width: 50%;
+    border: #313131 solid 0.02em;
+    margin: 2%;
+    height: 400px;
+    padding: 1%;
+}
+
+#formRestoo {
+    width: 50%;
+    border: #313131 solid 0.02em;
+    height: 400px;
+    margin: 2%;
+    padding: 1%;
+}
+
+#formadd {
+    width: 50%;
+    border: #313131 solid 0.02em;
+    height: 500px;
+    margin: 2%;
+    padding: 1%;
+}
+
+#lienResto {
+    width: 50%;
+    border: #313131 solid 0.02em;
+    height: 800px;
+    margin: 2%;
+    padding: 1%;
+    text-align: center;
+}
+
+.titrePage {
+    margin: 3%;
+}
+
+#demandeResa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2%;
+}
+
+#joursResto {
+    width: 50%;
+    border: solid 0.02em #313131;
+    margin: 2%;
+    padding: 1%;
+}
+
+#ResaDemande {
+    display: flex;
+    width: 100%;
+}
+
+#formResa {
+    width: 50%;
+    border: solid 0.02em #313131;
+    margin: 2%;
+    padding: 1%;
+}
+
+.jourResa {
+    width: 100% !important;
+    border: #313131;
+    height: 30px;
 }

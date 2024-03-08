@@ -16,7 +16,11 @@
 
     <link rel="stylesheet" href="styleJu.css">
     <link rel="stylesheet" href="styleSim.css">
+
+    <link rel="stylesheet" href="styleNono.css">
+
     <link rel="stylesheet" href="styleAde.css">
+
 
 
 
@@ -42,8 +46,8 @@
             <div id="header_logo_connexion">
 
 
-                <!-- logo ATTENTION MODIFIER LE LIEN ajout lien vers accueil-->
-                <a href="#"><img src="../public/images/logoSansFond.png" alt="logo eat booker" id="logo_header"></a>
+                <!-- logo -->
+                <a href="index.php"><img src="../public/images/logoSansFond.png" alt="logo eat booker" id="logo_header"></a>
 
                 <div id="header_connexion">
 
@@ -56,27 +60,19 @@
 
 
                     <!--bouton inscription/connexion user et admin ATTENTION CHANGER LE LIEN mettre lien vers formulaire de connexion -->
-                    <?php
-                    if (empty($_SESSION['id_user'])) {
-                    ?>
+                    <?php if (empty($_SESSION['id_user']) && empty($_SESSION['id_restaurant'])) : ?>
                         <a href="index.php?controller=User&action=login" id="connexion_user">
                             <button type="button" class="btn btn-light" id="connexion_user">
                                 <p class="text_button">Connexion/Inscription</p>
                             </button>
                         </a>
-                    <?php
-                    } else {
-                    ?>
-                        <a href="index.php?controller=User&action=logout" id="deconnexion_user">
+                    <?php else : ?>
+                        <a href="<?php echo isset($_SESSION['id_user']) ? 'index.php?controller=User&action=logout' : 'index.php?controller=restaurant&action=logout'; ?>" id="deconnexion_user">
                             <button type="button" class="btn btn-light" id="connexion_user">
-                                <p class="text_button">Deconnexion</p>
+                                <p class="text_button">Déconnexion</p>
                             </button>
                         </a>
-                    <?php
-                    }
-                    ?>
-
-                    </a>
+                    <?php endif; ?>
                 </div>
 
             </div>
@@ -175,13 +171,18 @@
 
     <!-- CONNEXION FICHIER SCRIPT.JS DANS DOSSIER JS -->
     <script src="js/scripts.js"></script>
-
+<<<<<<< HEAD
+    <script src="js/scriptFavori.js"></script>
+=======
+    <script src="js/scriptNoteResto.js"></script>
+>>>>>>> a66085c98c0af9585b904750e147fed8b44dccf0
     <script src="js/scriptsAde.js"></script>
-
+    <script src="js/scriptsGestionRestaurant.js"></script>
 
     <!-- CONNEXION js bootstrap -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+
 
 </html>
