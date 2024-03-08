@@ -486,4 +486,10 @@ class RestaurantController extends Controller
         }
         header('location:' . $this->baseUrlSite . 'index.php?controller=Restaurant&action=askResaAConfirm');
     }
+
+    public function findRestaurant()
+    {
+        // renvoie sur la view restaurant/findRestaurant
+        $this->render('restaurant/findRestaurant');
+    }
 }
