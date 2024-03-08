@@ -110,3 +110,79 @@ textBtnNav {
     font-size: 20px;
 
 }
+
+#FormulaireSignIn {
+    display: flex;
+    width: 100%;
+
+
+}
+
+#formUserr {
+    width: 50%;
+    border: #313131 solid 0.02em;
+    margin: 2%;
+    height: 400px;
+    padding: 1%;
+}
+
+#formRestoo {
+    width: 50%;
+    border: #313131 solid 0.02em;
+    height: 400px;
+    margin: 2%;
+    padding: 1%;
+}
+
+#formadd {
+    width: 50%;
+    border: #313131 solid 0.02em;
+    height: 500px;
+    margin: 2%;
+    padding: 1%;
+}
+
+#lienResto {
+    width: 50%;
+    border: #313131 solid 0.02em;
+    height: 800px;
+    margin: 2%;
+    padding: 1%;
+    text-align: center;
+}
+
+.titrePage {
+    margin: 3%;
+}
+
+#demandeResa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2%;
+}
+
+#joursResto {
+    width: 50%;
+    border: solid 0.02em #313131;
+    margin: 2%;
+    padding: 1%;
+}
+
+#ResaDemande {
+    display: flex;
+    width: 100%;
+}
+
+#formResa {
+    width: 50%;
+    border: solid 0.02em #313131;
+    margin: 2%;
+    padding: 1%;
+}
+
+.jourResa {
+    width: 100% !important;
+    border: #313131;
+    height: 30px;
+}

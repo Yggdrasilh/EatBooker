@@ -71,7 +71,7 @@ echo "Bonjour " . $_SESSION['prenom_user'];
 
 
             <!-- attention modifier lien -->
-            <a href="index.php?controller=restaurant&action=reservation&id=" class="btn btn-light btn-reserver" id="btn_reserver">Réserver</a>
+            <a href="index.php?controller=reservation&action=askResa&id=<?php echo $restaurantData['restaurant']['id_restaurant'] ?>" class="btn btn-light btn-reserver" id="btn_reserver">Réserver</a>
 
 
         </div>

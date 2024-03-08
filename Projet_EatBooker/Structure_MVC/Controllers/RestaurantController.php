@@ -11,6 +11,22 @@ use App\Controllers\CommentsController;
 
 class RestaurantController extends Controller
 {
+    public function findPlanning($idresto)
+    {
+        // Appeler l'API pour récupérer les informations restaurant
+        $apiUrl = $this->baseUrlApi . '/planning/find/' . $idresto;
+        $apiData = file_get_contents($apiUrl);
+        $planningData = json_decode($apiData, true);
+        // return $planningData;
+        // var_dump($planningData);
+        // die;
+
+        // renvoie sur la view homme/index
+        // $this->render('restaurant/formPlanning', ['planningData' => $planningData]);
+        return [
+            'planning' => $planningData
+        ];
+    }
 
 
     public function gestionRestaurantAdmin()
@@ -102,20 +118,23 @@ class RestaurantController extends Controller
                         ]),
                     ]
                 ];
+
                 $tab = stream_context_create($tableau);
 
                 //envoie de la requête
                 $data = file_get_contents($this->baseUrlApi . '/restaurant/add', false, $tab);
                 $convert = json_decode($data, true);
-
+                // var_dump($tableau);
+                // var_dump($data);
+                // var_dump($convert);
                 //Gestion des erreurs
                 if ($convert['status']) {
-                    header("Location:" . $this->baseUrlSite . "/");
+                    header("Location:" . $this->baseUrlSite);
                 } else {
-                    $this->render('restaurant/inscription', ['erreur' => true]);
+                    $this->render('user/formConnexion', ['erreur' => true]);
                 }
             } else {
-                $this->render('restaurant/inscription', ['erreur' => true]);
+                $this->render('user/formConnexion', ['erreur' => true]);
             }
         }
     }
@@ -123,6 +142,10 @@ class RestaurantController extends Controller
 
     public function planningRestaurant()
     {
+        // $planningData = $this->findPlanning($idresto);
+
+        $idresto = $_SESSION['id_restaurant'];
+        // // var_dump($this->baseUrlApi . '/restaurant/update/' . $idresto);
         if (empty($_POST)) {
             $this->render('restaurant/formPlanning', ['erreur' => false]);
         } else {
@@ -130,8 +153,12 @@ class RestaurantController extends Controller
             ////////////////////////////////////////////////////////////////////////////////////////////////////
             // Mise a jour  de la clé de l'id_planning dans la table restaurant
 
-            $dataResto = file_get_contents($this->baseUrlApi . '/restaurant/find/28'); // remplacer 28 par  l'id du restaurant connecté => $_SESSION['?']
+
+            // var_dump($_SESSION['id_restaurant']);
+            // die;
+            $dataResto = file_get_contents($this->baseUrlApi . '/restaurant/find/' . $idresto);
             $resto = json_decode($dataResto, true);
+
 
             $tableauResto = [
                 'http' => [
@@ -159,13 +186,13 @@ class RestaurantController extends Controller
             $tabResto = stream_context_create($tableauResto);
 
             //envoie de la requête
-            $dataResultResto = file_get_contents($this->baseUrlApi . '/restaurant/update/28', false, $tabResto); // remplacer 28 par  l'id du restaurant connecté => $_SESSION['?']
+            $dataResultResto = file_get_contents($this->baseUrlApi . '/restaurant/update/' . $idresto, false, $tabResto); // remplacer 28 par  l'id du restaurant connecté => $_SESSION['?']
             $convertResultResto = json_decode($dataResultResto, true);
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
             if ($convertResultResto['status']) {
-
-
+                // var_dump($convertResultResto);
+                // die;
                 //eviter les valeur null et attribuer les false au champs non cocher
                 $post = [
                     'checkLundiAm' => false,
@@ -188,14 +215,15 @@ class RestaurantController extends Controller
                         $post[$key] = true;
                     }
                 }
-
+                // var_dump($post);
+                // die;
                 //Création du body et récupération de toute les data a envoyer dans la requête
                 $tableau = [
                     'http' => [
                         'method' => "POST",
                         'header' => ["Content-type: application/json"],
                         'content' => json_encode([
-                            'id_planning' => 28, // l'id du resto puisque il ya un planning par resto  =>  $_SESSION['idResto ?']
+                            'id_planning' => $idresto, // l'id du resto puisque il ya un planning par resto  =>  $_SESSION['idResto ?']
                             'lundi_am' => $post['checkLundiAm'],
                             'lundi_pm' => $post['checkLundiPm'],
                             'mardi_am' => $post['checkMardiAm'],
@@ -210,16 +238,18 @@ class RestaurantController extends Controller
                             'samedi_pm' => $post['checkSamediPm'],
                             'dimanche_am' => $post['checkDimancheAm'],
                             'dimanche_pm' => $post['checkDimanchePm'],
-                            'id_restaurant' => 28, //definir le nom de la session pour l'id des restaurant  => $_SESSION['?']
+                            'id_restaurant' => $idresto, //definir le nom de la session pour l'id des restaurant  => $_SESSION['?']
                         ]),
                     ]
                 ];
                 $tab = stream_context_create($tableau);
-
+                // var_dump($tableau);
+                // die;
                 //envoie de la requête
                 $data = file_get_contents($this->baseUrlApi . '/planning/add', false, $tab);
                 $convert = json_decode($data, true);
-                var_dump($data);
+                // var_dump($data);
+                // die;
                 //Gestion des erreurs
                 if ($convert['status']) {
                     header("Location:" . $this->baseUrlSite . "/");
@@ -231,6 +261,7 @@ class RestaurantController extends Controller
             }
         }
     }
+
     public function find($id)
     {
         // recuperer l'id restaurant récupérer en GET
@@ -298,5 +329,161 @@ class RestaurantController extends Controller
         // die;
 
         return $restaurantData['restaurant'];
+    }
+
+    public function login()
+    {
+        $emailResto = $_POST['email_resto'] ?? '';
+        $passwordResto = $_POST['password_resto'] ?? '';
+        $valider = $_POST['valider'] ?? '';
+
+        $apiUrl = $this->baseUrlApi . '/restaurant';
+
+        // var_dump($emailResto);
+        // var_dump($passwordResto);
+
+        $apiData = file_get_contents($apiUrl);
+        $restoData = json_decode($apiData, true);
+
+        // Boucler pour pouvoir trouver les Email / passeword correspondant.    
+        foreach ($restoData['restaurant'] as $resto) {
+            if ($resto['email_restaurant'] === $emailResto && $resto['password_restaurant'] === $passwordResto) {
+                // var_dump($resto['id_restaurant']);
+                // die;
+                // Stocker les informations dans $_SESSION
+                $_SESSION['id_restaurant'] = $resto['id_restaurant'];
+                $_SESSION['nom_restaurant'] = $resto['nom_restaurant'];
+                $_SESSION['email_restaurant'] = $resto['email_restaurant'];
+                $_SESSION['adresse_restaurant'] = $resto['adresse_restaurant'];
+                $_SESSION['cp_restaurant'] = $resto['cp_restaurant'];
+                $_SESSION['ville_restaurant'] = $resto['ville_restaurant'];
+                $_SESSION['description_restaurant'] = $resto['description_restaurant'];
+                $_SESSION['place_max_restaurant'] = $resto['place_max_restaurant'];
+                $_SESSION['prix_restaurant'] = $resto['prix_restaurant'];
+                $_SESSION['type_restaurant'] = $resto['type_restaurant'];
+                $_SESSION['id_planning'] = $resto['id_planning'];
+                $_SESSION['role_user'] = 'restaurant';
+                // var_dump($_SESSION);
+                // die;
+                //    Envoyer l'utilisateur connecté vers la page d'accueil.
+
+
+                header('location:index.php?controller=Restaurant&action=askResaAConfirm');
+            }
+        }
+        if ($valider)
+            // Si pas ok, message d'erreur.
+            echo "Email ou mot de passe incorrect.";
+        // Si pas bon : Afficher le formulaire de connexion
+        $this->render('user/formConnexion');
+    }
+    public function logOut()
+    {
+        session_destroy();
+
+        header('location:' . $this->baseUrlSite . 'index.php?controller=User&action=login');
+    }
+
+
+    public function askResaAConfirm()
+    {
+        // Appel de L'api pour recuperer les resa a confirmer.
+        $apiUrl = $this->baseUrlApi . '/reservation';
+
+        $result = file_get_contents($apiUrl);
+        $responseData = json_decode($result, true);
+
+        if ($responseData) {
+            $reservations = [];
+
+            // Filtrer les réservations en fonction de l'ID du restaurant stocké dans $_SESSION
+            foreach ($responseData['reservation'] as $reservation) {
+                if ($reservation['id_restaurant'] == $_SESSION['id_restaurant']) {
+                    $reservations[] = $reservation;
+                }
+            }
+
+            // Passer les réservations filtrées à la vue
+            $this->render('restaurant/askResaAConfirm', ['reservations' => $reservations]);
+        } else {
+            // Gérer le cas où aucune réservation n'est retournée
+            echo "Aucune réservation trouvée pour votre restaurant.";
+        }
+    }
+    public function UpdateStatutResa($id)
+    {
+        $apiUrl = $this->baseUrlApi . '/reservation/find/' . $id;
+        $apiUpdateUrl = $this->baseUrlApi . '/reservation/update/' . $id; // URL pour la requête PATCH
+
+        // Récupérer les données de la réservation actuelle
+        $currentReservationData = file_get_contents($apiUrl);
+        $currentReservation = json_decode($currentReservationData, true);
+
+        // Vérifier si la réservation a été récupérée avec succès
+        if (isset($currentReservation['reservation'])) {
+            // Mettre à jour le statut de la réservation
+            $currentReservation['reservation']['statut_reservation'] = 'Validé !';
+
+            // Préparer les options de la requête PATCH
+            $options = array(
+                'http' => array(
+                    'method' => 'PATCH',
+                    'header' => 'Content-type: application/json',
+                    'content' => json_encode($currentReservation['reservation'])
+                )
+            );
+
+            // Envoyer la requête PATCH à l'API
+            $context = stream_context_create($options);
+            $result = file_get_contents($apiUpdateUrl, false, $context); // Utiliser l'URL de mise à jour
+            // var_dump($result);
+            // die;
+
+            if ($result !== false) {
+                $responseData = json_decode($result, true);
+
+                if (isset($responseData['status']) && $responseData['status']) {
+                    echo "La réservation a été validée avec succès !";
+                } else {
+                    echo "Une erreur s'est produite lors de la mise à jour de la réservation.";
+                }
+            } else {
+                echo "Une erreur s'est produite lors de l'envoi des données au serveur.";
+            }
+        } else {
+            echo "Impossible de récupérer les détails de la réservation.";
+        }
+        header('location:' . $this->baseUrlSite . 'index.php?controller=Restaurant&action=askResaAConfirm');
+    }
+
+
+
+    public function deleteReservation($id)
+    {
+        $apiUrl = $this->baseUrlApi . '/reservation/delete/' . $id;
+
+
+        $options = array(
+            'http' => array(
+                'method' => 'DELETE',
+            )
+        );
+
+        // Envoyer la requête DELETE à l'API
+        $context = stream_context_create($options);
+        $result = file_get_contents($apiUrl, false, $context);
+
+        if ($result !== false) {
+            $responseData = json_decode($result, true);
+
+            if (isset($responseData['status']) && $responseData['status']) {
+                echo "La réservation a été supprimée avec succès !";
+            } else {
+                echo "Une erreur s'est produite lors de la suppression de la réservation.";
+            }
+        } else {
+            echo "Une erreur s'est produite lors de l'envoi des données au serveur.";
+        }
+        header('location:' . $this->baseUrlSite . 'index.php?controller=Restaurant&action=askResaAConfirm');
     }
 }

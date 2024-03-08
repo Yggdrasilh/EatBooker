@@ -14,7 +14,7 @@ if ($erreur) {
 
 <form action="" method="post" id="renseignerPlanningRestaurant">
 
-    <h2>Rentrer vos horaires d'ouverture</h2>
+    <h2 class='titrePage'>Indiquez vos horaires d'ouverture</h2>
     <table class="table table-striped table-dark">
         <thead>
             <tr>

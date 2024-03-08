@@ -60,27 +60,19 @@
 
 
                     <!--bouton inscription/connexion user et admin ATTENTION CHANGER LE LIEN mettre lien vers formulaire de connexion -->
-                    <?php
-                    if (empty($_SESSION['id_user'])) {
-                    ?>
+                    <?php if (empty($_SESSION['id_user']) && empty($_SESSION['id_restaurant'])) : ?>
                         <a href="index.php?controller=User&action=login" id="connexion_user">
                             <button type="button" class="btn btn-light" id="connexion_user">
                                 <p class="text_button">Connexion/Inscription</p>
                             </button>
                         </a>
-                    <?php
-                    } else {
-                    ?>
-                        <a href="index.php?controller=User&action=logout" id="deconnexion_user">
+                    <?php else : ?>
+                        <a href="<?php echo isset($_SESSION['id_user']) ? 'index.php?controller=User&action=logout' : 'index.php?controller=restaurant&action=logout'; ?>" id="deconnexion_user">
                             <button type="button" class="btn btn-light" id="connexion_user">
-                                <p class="text_button">Deconnexion</p>
+                                <p class="text_button">Déconnexion</p>
                             </button>
                         </a>
-                    <?php
-                    }
-                    ?>
-
-                    </a>
+                    <?php endif; ?>
                 </div>
 
             </div>
